@@ -80,4 +80,7 @@ a {
     .nav-header, .footer-container, .greetings, .about-quiz  {
         width: 80%;
     }
+    .nav-list {
+        font-size: 15px;
+      }
   }
