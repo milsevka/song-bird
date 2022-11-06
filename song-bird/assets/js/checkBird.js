@@ -20,8 +20,7 @@ let answer = document.querySelectorAll(".form-check-label");
 let counter = 0;
 let deleteCheck;
 
-let nowAns = localStorage.getItem("now");
-console.log(`${nowAns} ответ`);
+
 
 
 export default function check() {
@@ -62,7 +61,7 @@ next.addEventListener("click", () => {
   clickProgress;
   woof = false;
  
-  // nowAns = localStorage.getItem("now");
+
   deleteCheck = localStorage.getItem("check")
   allBirds[deleteCheck].checked = false;
   localStorage.removeItem('check')
@@ -74,7 +73,7 @@ next.addEventListener("click", () => {
 function win() {
   deleteCheck = localStorage.getItem("check")
   console.log(`${deleteCheck} победа выбор`);
-
+  let nowAns = localStorage.getItem("now");
   if (deleteCheck === nowAns) {
     nameCur.innerHTML = birdsData[counter][deleteCheck].name;
     imgCur.src = birdsData[counter][deleteCheck].image;

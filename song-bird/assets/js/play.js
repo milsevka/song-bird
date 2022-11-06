@@ -14,14 +14,20 @@ let next = document.querySelector(".button-next");
 let counter = 0;
 
 
- let playNum;
-
+let playNum;
+function random () {
+    playNum = getRandomIntInclusive(0,5); 
+    localStorage.setItem("now", playNum)  
+    console.log(`${playNum} random`)
+}
 
 
 export function music() {
+    random()
   const player = document.querySelector(".player");
-  playNum = getRandomIntInclusive(0,5);
-  localStorage.setItem("now", playNum)
+
+  
+  
   player.classList.add("meow");
   buttonPlay.addEventListener("click", toggleBtn);
   audio.currentTime = 0;
@@ -114,6 +120,7 @@ next.addEventListener("click", () => {
   updateProgress;
   setUpdate;
   clickProgress;
+  random()
     console.log(`${playNum} после изменения номер песни`)
     console.log(`${counter} счетчик уровня`)
   });
