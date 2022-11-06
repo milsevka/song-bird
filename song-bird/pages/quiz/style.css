@@ -278,6 +278,28 @@ border-radius: 5px;
   
 }
 @media (max-width: 530px) {
+  .parent-current-questions {
+    height: 300px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+  
+  .current-img {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+ 
+  .current-name {
+
+    grid-area: 2 / 1 / 3 / 2;
+  
+  }
+  .current-song {
+    width: 100%;
+    grid-area: 3 / 1 / 4 / 2;
+  }
   .parent-quiz-header {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
