@@ -1,5 +1,5 @@
 import birdsData from "./list.js";
-import getRandomIntInclusive from './random.js';
+import getRandomIntInclusive from "./random.js";
 
 const audio = new Audio();
 const buttonPlay = document.querySelector(".play");
@@ -13,20 +13,16 @@ const volume = document.querySelector(".volume");
 let next = document.querySelector(".button-next");
 let counter = 0;
 
-
 let playNum;
-function random () {
-    playNum = getRandomIntInclusive(0,5); 
-    localStorage.setItem("now", playNum)  
+function random() {
+  playNum = getRandomIntInclusive(0, 5);
+  localStorage.setItem("now", playNum);
 }
 const player = document.querySelector(".player");
 
 export function music() {
-    random()
- 
+  random();
 
-  
-  
   player.classList.add("meow");
   buttonPlay.addEventListener("click", toggleBtn);
   audio.currentTime = 0;
@@ -41,12 +37,17 @@ export function music() {
     player.classList.add("meow");
     // localStorage.setItem("timePlay", audio.currentTime)
   }
+  function pauseAudioNext() {
+    audio.pause();
+    player.classList.remove("meow");
+    // localStorage.setItem("timePlay", audio.currentTime)
+  }
+
   function playAudio() {
     updateCurrentSong();
     audio.play();
     player.classList.remove("meow");
   }
- 
 
   function toggleBtn() {
     buttonPlay.classList.toggle("pause");
@@ -58,6 +59,7 @@ export function music() {
       playAudio();
     } else {
       pauseAudio();
+      pauseAudioNext();
     }
   });
   volumeImg.addEventListener("mouseover", () => {
@@ -79,6 +81,26 @@ export function music() {
     audio.volume = v / 100;
   }
   document.querySelector(".volume").oninput = audioValue;
+
+  next.addEventListener("click", () => {
+    let win = localStorage.getItem("win");
+    if (win) {
+      counter++;
+      audio.currentTime = 0;
+      timeAll.textContent = "00:00";
+      player.classList.remove("meow");
+      pauseAudioNext();
+      playAudio();
+      toggleBtn();
+      music;
+      updateProgress;
+      setUpdate;
+      clickProgress;
+      random();
+    } else {
+      console.log("nooooooow");
+    }
+  });
 }
 music();
 
@@ -112,19 +134,4 @@ export function setUpdate() {
   setTimeout(setUpdate, 1000);
 }
 
-
-next.addEventListener("click", () => {
-counter++;
-audio.currentTime = 0;
-timeAll.textContent = '00:00'
-audio.pause()
-player.classList.add("meow");
-  music;
-  updateProgress;
-  setUpdate;
-  clickProgress;
-  random()
-  });
-  
 buttonPlay.addEventListener("click", setUpdate);
- 

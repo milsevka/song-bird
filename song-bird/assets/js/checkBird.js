@@ -19,7 +19,7 @@ let answer = document.querySelectorAll(".form-check-label");
 
 let counter = 0;
 let deleteCheck;
-
+let goNext = false;
 
 
 
@@ -47,33 +47,41 @@ export default function check() {
 }
 
 next.addEventListener("click", () => {
-  counter++;
-  nameCur.innerHTML = "******";
-  imgCur.src = "../../assets/images/pngwing.com.png";
-  nameBird.innerHTML = "";
-  infoBird.innerHTML = "Послушайте плеер.Выберите птицу из списка";
-  nameEng.innerHTML = "";
-  meow.remove();
-  getRandomIntInclusive(0,5)
-  music;
-  updateProgress;
-  setUpdate;
-  clickProgress;
-  woof = false;
- 
-
-  deleteCheck = localStorage.getItem("check")
-  allBirds[deleteCheck].checked = false;
-  localStorage.removeItem('check')
-  for (let i = 0; i < answer.length; i++) {
-    answer[i].innerHTML = birdsData[counter][i].name;
+  if (goNext) {
+    counter++;
+    nameCur.innerHTML = "******";
+    imgCur.src = "../../assets/images/pngwing.com.png";
+    nameBird.innerHTML = "";
+    infoBird.innerHTML = "Послушайте плеер.Выберите птицу из списка";
+    nameEng.innerHTML = "";
+    meow.remove();
+    getRandomIntInclusive(0,5)
+    music;
+    updateProgress;
+    setUpdate;
+    clickProgress;
+    woof = false;
+    deleteCheck = localStorage.getItem("check")
+    allBirds[deleteCheck].checked = false;
+    localStorage.removeItem('check')
+    localStorage.removeItem('win')
+    for (let i = 0; i < answer.length; i++) {
+      answer[i].innerHTML = birdsData[counter][i].name;
+    }
+    next.classList.remove("button-next-active")
+  } else {
+    console.log('noooow')
   }
+  
 });
 
 function win() {
   deleteCheck = localStorage.getItem("check")
   let nowAns = localStorage.getItem("now");
   if (deleteCheck === nowAns) {
+    goNext = true;
+    localStorage.setItem("win", goNext)
+    next.classList.add("button-next-active")
     nameCur.innerHTML = birdsData[counter][deleteCheck].name;
     imgCur.src = birdsData[counter][deleteCheck].image;
   } else {
@@ -87,3 +95,4 @@ check();
 
 
 localStorage.removeItem('check')
+localStorage.removeItem('win')
