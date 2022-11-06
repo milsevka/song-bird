@@ -18,13 +18,12 @@ let playNum;
 function random () {
     playNum = getRandomIntInclusive(0,5); 
     localStorage.setItem("now", playNum)  
-    console.log(`${playNum} random`)
 }
-
+const player = document.querySelector(".player");
 
 export function music() {
     random()
-  const player = document.querySelector(".player");
+ 
 
   
   
@@ -37,7 +36,6 @@ export function music() {
     audio.play();
     timeAll.textContent = `${birdsData[counter][playNum].duration}`;
   }
-
   function pauseAudio() {
     audio.pause();
     player.classList.add("meow");
@@ -48,6 +46,7 @@ export function music() {
     audio.play();
     player.classList.remove("meow");
   }
+ 
 
   function toggleBtn() {
     buttonPlay.classList.toggle("pause");
@@ -115,14 +114,16 @@ export function setUpdate() {
 
 
 next.addEventListener("click", () => {
-    counter++;
+counter++;
+audio.currentTime = 0;
+timeAll.textContent = '00:00'
+audio.pause()
+player.classList.add("meow");
   music;
   updateProgress;
   setUpdate;
   clickProgress;
   random()
-    console.log(`${playNum} после изменения номер песни`)
-    console.log(`${counter} счетчик уровня`)
   });
   
 buttonPlay.addEventListener("click", setUpdate);

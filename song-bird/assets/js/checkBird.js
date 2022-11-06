@@ -72,7 +72,6 @@ next.addEventListener("click", () => {
 
 function win() {
   deleteCheck = localStorage.getItem("check")
-  console.log(`${deleteCheck} победа выбор`);
   let nowAns = localStorage.getItem("now");
   if (deleteCheck === nowAns) {
     nameCur.innerHTML = birdsData[counter][deleteCheck].name;
