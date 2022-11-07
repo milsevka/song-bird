@@ -23,13 +23,14 @@
     <main>
        <section class="quiz-header">
         <div class="parent-quiz-header">
-            <div class="div1">Разминка</div>
-            <div class="div2">Воробьиные</div>
-            <div class="div3">Лесные птицы</div>
-            <div class="div4">Певчие птицы</div>
-            <div class="div5">Хищные птицы</div>
-            <div class="div6">Морские птицы</div>
-            </div>
+            <div class="div1" id="diff-birds">Разминка</div>
+            <div class="div2" id="diff-birds">Воробьиные</div>
+            <div class="div3" id="diff-birds">Лесные птицы</div>
+            <div class="div4" id="diff-birds">Певчие птицы</div>
+            <div class="div5" id="diff-birds">Хищные птицы</div>
+            <div class="div6" id="diff-birds">Морские птицы</div>
+          </div>
+          <div class="score">0</div>
        </section>
        <section class="current-questions">
         <div class="parent-current-questions">
@@ -40,9 +41,6 @@
             <div class="current-song">
                 
                 <div class="player">
-                    <!-- <div class="player-controls">
-                      <button class="play player-icon"></button>
-                    </div> -->
                     <div class="volume_container">
                       <div class="volumeAll">
                         <img src="../../assets/images/volumeon.png" class="volumeImg">
@@ -70,37 +68,38 @@
        <section class="answer">
         <div class="parent-answer">
             <div class="form-check">
-                <input class="form-check-input" type="radio" value="" id="one" name="check">
+              <!-- name="check" -->
+                <input class="form-check-input" type="radio" name="check" value="" id="one" >
                 <label class="form-check-label" for="one">
                   Ворон
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" value="" id="two" name="check">
+                <input class="form-check-input" type="radio" name="check" value="" id="two" >
                 <label class="form-check-label" for="two">
                   Журавль
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" value="" id="three" name="check">
+                <input class="form-check-input" type="radio" name="check" value="" id="three" >
                 <label class="form-check-label" for="three">
                   Ласточка
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" value="" id="four" name="check">
+                <input class="form-check-input" type="radio" name="check" value="" id="four" >
                 <label class="form-check-label" for="four">
                  Козодой
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" value="" id="five" name="check">
+                <input class="form-check-input" type="radio" name="check" value="" id="five">
                 <label class="form-check-label" for="five">
                  Кукушка
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" value="" id="six" name="check">
+                <input class="form-check-input" type="radio" name="check" value="" id="six" >
                 <label class="form-check-label" for="six">
                  Синица
                 </label>
@@ -112,6 +111,22 @@
             <div class="answer-song"></div>
         </div>
         <button type="button" class="button-next">Следующий вопрос</button>
+
+        <div class="wrapper_popup">
+          <div class="popup">
+            <div class="feedback_cardpop">
+            </div>
+            <button type="button" class="button-again">попробовать еще раз</button>
+            <div class="close_popup">
+              <img
+                src="../../assets/images/clarity_window-close-line.svg"
+                alt="close"
+                class="close_popup"
+              />
+            </div>
+          </div>
+        </div>
+
        </section> 
     </main>
     <footer>

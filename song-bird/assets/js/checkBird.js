@@ -1,7 +1,11 @@
 import birdsData from "./list.js";
 import { music, updateProgress, setUpdate, clickProgress } from "./play.js";
-import getRandomIntInclusive from './random.js';
+import getRandomIntInclusive from "./random.js";
+import style from './header.js'
 
+
+const buttonPlay = document.querySelector(".play");
+const player = document.querySelector(".player");
 let allBirds = document.querySelectorAll(".form-check-input");
 let nameBird = document.querySelector(".answer-name-bird");
 let nameEng = document.querySelector(".answer-name-eng");
@@ -13,86 +17,139 @@ let next = document.querySelector(".button-next");
 let woof = false;
 let meow = document.createElement("img");
 let answer = document.querySelectorAll(".form-check-label");
-
-
-
+let score = document.querySelector(".score");
+let wrapperPopup = document.querySelector(".wrapper_popup");
+let textPopup = document.querySelector(".feedback_cardpop")
+let closePopup = document.querySelector(".close_popup")
 
 let counter = 0;
 let deleteCheck;
 let goNext = false;
-
-
+let currentScore = 0;
+let counterScore = 0;
+let counterLevel = 0;
+localStorage.setItem("countLevel", counterLevel)
 
 export default function check() {
-
   document.querySelector(".parent-answer").addEventListener("click", () => {
     if (!woof) {
       meow.className = "answer-img-photo";
       imgBird.append(meow);
     }
-    for (let i = 0; i < allBirds.length; i++) {  
+
+   
+    for (let i = 0; i < allBirds.length; i++) {
       if (allBirds[i].checked) {
         localStorage.setItem("check", i);
-        win()
         nameBird.innerHTML = birdsData[counter][i].name;
         infoBird.innerHTML = birdsData[counter][i].description;
         meow.src = birdsData[counter][i].image;
         nameEng.innerHTML = birdsData[counter][i].species;
         woof = true;
-      }
+         win();
+      } 
+      
     }
-   
   });
- 
 }
 
+
 next.addEventListener("click", () => {
-  if (goNext) {
+  player.classList.add("meow");
+  counterLevel++
+  localStorage.setItem("countLevel", counterLevel);
+  buttonPlay.classList.remove("pause");
+  style();
+  if (goNext && counter<= 4) {
     counter++;
     nameCur.innerHTML = "******";
-    imgCur.src = "../../assets/images/pngwing.com.png";
+    imgCur.src =
+      "https://birds-quiz.netlify.app/static/media/bird.06a46938.jpg";
     nameBird.innerHTML = "";
     infoBird.innerHTML = "Послушайте плеер.Выберите птицу из списка";
     nameEng.innerHTML = "";
     meow.remove();
-    getRandomIntInclusive(0,5)
+    getRandomIntInclusive(0, 5);
     music;
     updateProgress;
     setUpdate;
     clickProgress;
+    
     woof = false;
-    deleteCheck = localStorage.getItem("check")
-    allBirds[deleteCheck].checked = false;
-    localStorage.removeItem('check')
-    localStorage.removeItem('win')
+    deleteCheck = localStorage.getItem("check");
+    currentScore = 0;
+    for (let x = 0; x < allBirds.length; x++) {
+      allBirds[x].checked = false;
+    }
+
+    localStorage.removeItem("check");
+    localStorage.removeItem("win");
+
     for (let i = 0; i < answer.length; i++) {
       answer[i].innerHTML = birdsData[counter][i].name;
+      answer[i].style.color = "";
     }
-    next.classList.remove("button-next-active")
+
+    next.classList.remove("button-next-active");
   } else {
-    console.log('noooow')
+    wrapperPopup.classList.add("open-popup");
+    textPopup.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов`
+    console.log("noooow");
   }
-  
 });
 
+
 function win() {
-  deleteCheck = localStorage.getItem("check")
+
+  deleteCheck = localStorage.getItem("check");
   let nowAns = localStorage.getItem("now");
-  if (deleteCheck === nowAns) {
+  if (deleteCheck === nowAns) { 
+    
     goNext = true;
-    localStorage.setItem("win", goNext)
-    next.classList.add("button-next-active")
-    nameCur.innerHTML = birdsData[counter][deleteCheck].name;
-    imgCur.src = birdsData[counter][deleteCheck].image;
+    localStorage.setItem("win", goNext);
+    next.classList.add("button-next-active");
+   
+    nameCur.innerHTML = birdsData[counter][nowAns].name;
+    imgCur.src = birdsData[counter][nowAns].image;
+
+    nameBird.innerHTML = birdsData[counter][nowAns].name;
+    infoBird.innerHTML = birdsData[counter][nowAns].description;
+    meow.src = birdsData[counter][nowAns].image;
+    nameEng.innerHTML = birdsData[counter][nowAns].species;
+   
+    answer[deleteCheck].style.color = "green";
+    changeScore();
+  
   } else {
-    console.log('noow')
+    answer[deleteCheck].style.color = "rgb(167, 82, 82)";
+    console.log("noow");
   }
 }
 
+// if (deleteCheck === nowAns) {
+//   currentScore = currentScore + 5
+// } else {
+//   currentScore = currentScore - 1;
 
+//   console.log(`${currentScore} текущий счет`)
+//   console.log(`${counterScore} общий счет`)
+// }
+
+function changeScore() {
+  currentScore = currentScore + 5;
+  counterScore = counterScore + currentScore;
+  score.innerHTML = counterScore;
+  // if(counterScore === 30) {
+  //   // победный текст
+  // }
+}
+
+closePopup.addEventListener("click" , () => {
+  wrapperPopup.classList.remove("open-popup");
+})
 
 check();
 
-
-localStorage.removeItem('check')
-localStorage.removeItem('win')
+localStorage.removeItem("check");
+localStorage.removeItem("win");
+ localStorage.removeItem("countLevel");

@@ -72,10 +72,17 @@ a {
 .div6 {
   grid-area: 1 / 6 / 2 / 7;
 }
+.styleLevel {
+  background-color: antiquewhite;
+}
 .current-questions,
 .answer {
   background-color: rgb(46, 148, 119);
 }
+
+/* .form-check-input:checked ~ .form-check-label{
+  color: rgb(167, 82, 82);
+} */
 .parent-current-questions {
   height: 175px;
   display: grid;
@@ -84,7 +91,9 @@ a {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
-
+.score {
+  margin: 10px 10px;
+}
 .current-img {
   margin-top: 10px;
   grid-area: 1 / 1 / 3 / 2;
@@ -243,7 +252,7 @@ border-radius: 5px;
 .answer-name-eng { grid-area: 2 / 3 / 3 / 4; }
 .answer-song { grid-area: 3 / 3 / 4 / 4; }
 
-.button-next {
+.button-next, .button-again {
   width: 100%;
   margin-top: 50px;
   font-size: 25px;
@@ -265,6 +274,42 @@ border-radius: 5px;
   width: 50px;
   height: 40px;
 }
+
+.wrapper_popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color: rgb(20, 20, 20, 0.2);
+  justify-content: center;
+  align-items: center;
+}
+.open-popup {
+  display: flex;
+}
+.popup {
+  display: inline;
+  background-color: #6cc99b;
+  padding-top: 20px;
+  padding-left: 17px;
+  width: 90%;
+  height: 90%;
+  position: relative;
+  font-size: 40px;
+}
+.close_popup {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+
+
 @media (max-width: 770px) {
   .nav-header,
   .footer-container,

@@ -24,7 +24,9 @@ export function music() {
   random();
 
   player.classList.add("meow");
-  buttonPlay.addEventListener("click", toggleBtn);
+  buttonPlay.addEventListener("click", toggleBtn)
+
+
   audio.currentTime = 0;
   function updateCurrentSong() {
     audio.src = birdsData[counter][playNum].audio;
@@ -51,6 +53,11 @@ export function music() {
 
   function toggleBtn() {
     buttonPlay.classList.toggle("pause");
+    // if(buttonPlay.classList.contains("pause")){
+    //   pauseAudio()
+    // } else {
+    //   playAudio()
+    // }
   }
 
   buttonPlay.addEventListener("click", () => {
@@ -81,6 +88,8 @@ export function music() {
     audio.volume = v / 100;
   }
   document.querySelector(".volume").oninput = audioValue;
+ 
+
 
   next.addEventListener("click", () => {
     let win = localStorage.getItem("win");
@@ -88,9 +97,9 @@ export function music() {
       counter++;
       audio.currentTime = 0;
       timeAll.textContent = "00:00";
-      player.classList.remove("meow");
+      
       pauseAudioNext();
-      playAudio();
+      
       toggleBtn();
       music;
       updateProgress;
