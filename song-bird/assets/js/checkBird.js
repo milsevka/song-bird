@@ -34,11 +34,15 @@ let counterLevel = 0;
 localStorage.setItem("countLevel", counterLevel)
 
 export default function check() {
-  arrayAnswer.addEventListener("click", () => {
-    if (!woof) {
+  arrayAnswer.addEventListener("click", (event) => {
+    let target = event.target;
+  if (target.name = "check") {
+    
+  
+    // if (!woof) {
       meow.className = "answer-img-photo";
       imgBird.append(meow);
-    }
+    // }
     for (let i = 0; i < allBirds.length; i++) {
       if (allBirds[i].checked) {
         localStorage.setItem("check", i);
@@ -50,7 +54,7 @@ export default function check() {
          win();
       } 
     }
-  });
+  } });
 }
 
 
@@ -93,7 +97,7 @@ next.addEventListener("click", () => {
     next.classList.remove("button-next-active");
   } else {
     wrapperPopup.classList.add("open-popup");
-    textPopup.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов. Жаль, это не максимальное количество. 
+    textPopup.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов из 30. Жаль, это не максимальное количество. 
     Попробуйте еще раз!`
   }
 });
@@ -103,6 +107,9 @@ function win() {
 
   deleteCheck = localStorage.getItem("check");
   let nowAns = localStorage.getItem("now");
+  if(counterLevel === 5) {
+    next.innerHTML = "Посмотреть результаты";
+  }
   if (deleteCheck === nowAns) { 
     
     goNext = true;
@@ -131,7 +138,7 @@ function changeScore() {
   counterScore = counterScore + currentScore;
   score.innerHTML = counterScore;
   if(counterScore === 30) {
-    textPopup.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов и успешно прошли игру.
+    textPopup.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов из 30 и успешно прошли игру.
      Возможно, вам стоит стать орнитологом!`
   }
 }
@@ -142,7 +149,7 @@ closePopup.addEventListener("click" , () => {
 
 arrayAnswer.onclick = function cur(event) {
   let target = event.target;
-  if (target.className = "form-check-input") {
+  if (target.name = "check") {
     currentScore = currentScore - 1;
   }
  
