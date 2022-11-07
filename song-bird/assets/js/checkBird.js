@@ -21,23 +21,24 @@ let score = document.querySelector(".score");
 let wrapperPopup = document.querySelector(".wrapper_popup");
 let textPopup = document.querySelector(".feedback_cardpop")
 let closePopup = document.querySelector(".close_popup")
+let arrayAnswer = document.querySelector(".parent-answer")
 
 let counter = 0;
 let deleteCheck;
 let goNext = false;
+
 let currentScore = 0;
 let counterScore = 0;
+
 let counterLevel = 0;
 localStorage.setItem("countLevel", counterLevel)
 
 export default function check() {
-  document.querySelector(".parent-answer").addEventListener("click", () => {
+  arrayAnswer.addEventListener("click", () => {
     if (!woof) {
       meow.className = "answer-img-photo";
       imgBird.append(meow);
     }
-
-   
     for (let i = 0; i < allBirds.length; i++) {
       if (allBirds[i].checked) {
         localStorage.setItem("check", i);
@@ -48,7 +49,6 @@ export default function check() {
         woof = true;
          win();
       } 
-      
     }
   });
 }
@@ -93,8 +93,8 @@ next.addEventListener("click", () => {
     next.classList.remove("button-next-active");
   } else {
     wrapperPopup.classList.add("open-popup");
-    textPopup.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов`
-    console.log("noooow");
+    textPopup.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов. Жаль, это не максимальное количество. 
+    Попробуйте еще раз!`
   }
 });
 
@@ -122,31 +122,31 @@ function win() {
   
   } else {
     answer[deleteCheck].style.color = "rgb(167, 82, 82)";
-    console.log("noow");
   }
 }
 
-// if (deleteCheck === nowAns) {
-//   currentScore = currentScore + 5
-// } else {
-//   currentScore = currentScore - 1;
-
-//   console.log(`${currentScore} текущий счет`)
-//   console.log(`${counterScore} общий счет`)
-// }
 
 function changeScore() {
-  currentScore = currentScore + 5;
+  currentScore = currentScore + 6;
   counterScore = counterScore + currentScore;
   score.innerHTML = counterScore;
-  // if(counterScore === 30) {
-  //   // победный текст
-  // }
+  if(counterScore === 30) {
+    textPopup.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов и успешно прошли игру.
+     Возможно, вам стоит стать орнитологом!`
+  }
 }
 
 closePopup.addEventListener("click" , () => {
   wrapperPopup.classList.remove("open-popup");
 })
+
+arrayAnswer.onclick = function cur(event) {
+  let target = event.target;
+  if (target.className = "form-check-input") {
+    currentScore = currentScore - 1;
+  }
+ 
+}
 
 check();
 
