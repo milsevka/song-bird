@@ -80,9 +80,9 @@ a {
   background-color: rgb(46, 148, 119);
 }
 
-/* .form-check-input:checked ~ .form-check-label{
+.bad-answer{
   color: rgb(167, 82, 82);
-} */
+}
 .parent-current-questions {
   height: 175px;
   display: grid;

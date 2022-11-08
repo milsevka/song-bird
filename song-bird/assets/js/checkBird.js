@@ -29,6 +29,8 @@ let goNext = false;
 
 let currentScore = 0;
 let counterScore = 0;
+let current = 0;
+
 
 let counterLevel = 0;
 localStorage.setItem("countLevel", counterLevel)
@@ -82,8 +84,12 @@ next.addEventListener("click", () => {
     woof = false;
     deleteCheck = localStorage.getItem("check");
     currentScore = 0;
+    localStorage.setItem("score" , currentScore)
+    current = 0;
+  
     for (let x = 0; x < allBirds.length; x++) {
       allBirds[x].checked = false;
+      answer[x].classList.remove("bad-answer");
     }
 
     localStorage.removeItem("check");
@@ -128,14 +134,17 @@ function win() {
     changeScore();
   
   } else {
-    answer[deleteCheck].style.color = "rgb(167, 82, 82)";
+    answer[deleteCheck].classList.add("bad-answer");
+    currentScore = currentScore -1
+    localStorage.setItem("score", currentScore)
   }
 }
 
 
 function changeScore() {
-  currentScore = currentScore + 6;
-  counterScore = counterScore + currentScore;
+  current = localStorage.getItem("score")
+  current = +current + +5;
+  counterScore = counterScore + current;
   score.innerHTML = counterScore;
   if(counterScore === 30) {
     textPopup.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов из 30 и успешно прошли игру.
@@ -147,16 +156,11 @@ closePopup.addEventListener("click" , () => {
   wrapperPopup.classList.remove("open-popup");
 })
 
-arrayAnswer.onclick = function cur(event) {
-  let target = event.target;
-  if (target.name = "check") {
-    currentScore = currentScore - 1;
-  }
- 
-}
+
 
 check();
 
 localStorage.removeItem("check");
 localStorage.removeItem("win");
  localStorage.removeItem("countLevel");
+ localStorage.removeItem("score");
