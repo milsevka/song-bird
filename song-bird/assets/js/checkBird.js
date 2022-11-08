@@ -92,7 +92,7 @@ next.addEventListener("click", () => {
     current = 0;
   
     for (let x = 0; x < allBirds.length; x++) {
-      allBirds[x].checked = false;
+      
       answer[x].classList.remove("bad-answer");
     }
 

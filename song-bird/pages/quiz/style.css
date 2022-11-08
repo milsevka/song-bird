@@ -221,7 +221,9 @@ border-radius: 5px;
 }
 
 .form-check {
-  height: 15%;
+  height: 17%;
+  width: 100%;
+  border: 1px solid red;
 } 
 .form-check-input {
   display: inline-block;
@@ -370,10 +372,19 @@ ul {
 .div5 { grid-area: 2 / 2 / 3 / 3; }
 .div6 { grid-area: 2 / 3 / 3 / 4; }
   .parent-answer {
-    height: 500px;
+    height: 600px;
     flex-direction: column;
   }
 .divcontans {
   width: calc(100% - 20px);
+}
+.divcont {
+  width: 100%;
+  height: 222px;
+}
+.form-check {
+  height: 20%;
+  width: 100%;
+  border: 1px solid red;
 }
 }
