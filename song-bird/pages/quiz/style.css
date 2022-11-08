@@ -212,45 +212,39 @@ border-radius: 5px;
 
 .parent-answer {
   height: 325px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    grid-column-gap: 10px;
-    grid-row-gap: 0px;
-  
+    display: flex;
+    flex-direction: row;
+ 
+}
+.divcontans {
+  width: 420px;
 }
 
-.answer-info {
-  grid-area: 4 / 2 / 7 / 4;
-}
+.form-check {
+  height: 15%;
+} 
+/* .answer-info {
+} */
 .answer-info-text {
   hyphens: auto;
   word-wrap: break-word;
 }
-.answer-one {
-  grid-area: 1 / 1 / 2 / 2;
+.divcont {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
 }
-.answer-two {
-  grid-area: 2 / 1 / 3 / 2;
+.answer-img { 
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
-.answer-three {
-  grid-area: 3 / 1 / 4 / 2;
+
+.answer-name-bird { 
+   margin-top: 10px;
+  margin-bottom: 10px;
 }
-.answer-four {
-  grid-area: 5 / 1 / 6 / 2;
-}
-.answer-five {
-  grid-area: 4 / 1 / 5 / 2;
-}
-.answer-six {
-  grid-area: 6 / 1 / 7 / 2;
-}
-.answer-img { grid-area: 1 / 2 / 4 / 3; margin-top: 10px;
-  margin-bottom: 10px;}
-.answer-name-bird { grid-area: 1 / 3 / 2 / 4; margin-top: 10px;
-  margin-bottom: 10px;}
-.answer-name-eng { grid-area: 2 / 3 / 3 / 4; }
-.answer-song { grid-area: 3 / 3 / 4 / 4; }
+/* .answer-name-eng {  }
+.answer-song { } */
 
 .button-next, .button-again {
   width: 100%;

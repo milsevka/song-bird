@@ -6,6 +6,7 @@ import style from './header.js'
 
 const buttonPlay = document.querySelector(".play");
 const player = document.querySelector(".player");
+let mainClick = document.querySelector(".divcont")
 let allBirds = document.querySelectorAll(".form-check-input");
 let nameBird = document.querySelector(".answer-name-bird");
 let nameEng = document.querySelector(".answer-name-eng");
@@ -16,7 +17,7 @@ let imgCur = document.querySelector(".current-bird");
 let next = document.querySelector(".button-next");
 let woof = false;
 let meow = document.createElement("img");
-let answer = document.querySelectorAll(".form-check-label");
+let answer = document.querySelectorAll(".form-check");
 let score = document.querySelector(".score");
 let wrapperPopup = document.querySelector(".wrapper_popup");
 let textPopup = document.querySelector(".feedback_cardpop")
@@ -31,32 +32,35 @@ let currentScore = 0;
 let counterScore = 0;
 let current = 0;
 
+let numberBird;
 
 let counterLevel = 0;
 localStorage.setItem("countLevel", counterLevel)
 
 export default function check() {
-  arrayAnswer.addEventListener("click", (event) => {
-    let target = event.target;
-  if (target.name = "check") {
+  mainClick.addEventListener("click", (event) => {
+  let target = event.target;
+ 
+  if (target.className = "form-check") {
     
   
-    // if (!woof) {
       meow.className = "answer-img-photo";
       imgBird.append(meow);
-    // }
-    for (let i = 0; i < allBirds.length; i++) {
-      if (allBirds[i].checked) {
-        localStorage.setItem("check", i);
-        nameBird.innerHTML = birdsData[counter][i].name;
-        infoBird.innerHTML = birdsData[counter][i].description;
-        meow.src = birdsData[counter][i].image;
-        nameEng.innerHTML = birdsData[counter][i].species;
+      numberBird = target.id - 1
+
+        localStorage.setItem("check", numberBird);
+         nameBird.innerHTML = birdsData[counter][numberBird].name;
+        infoBird.innerHTML = birdsData[counter][numberBird].description;
+        meow.src = birdsData[counter][numberBird].image;
+        nameEng.innerHTML = birdsData[counter][numberBird].species;
         woof = true;
          win();
-      } 
-    }
-  } });
+       } 
+  //   }
+  // } else {
+  //   console.log('now');
+  // }
+ });
 }
 
 
