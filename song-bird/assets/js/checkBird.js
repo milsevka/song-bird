@@ -135,10 +135,12 @@ function win() {
     nameEng.innerHTML = birdsData[counter][nowAns].species;
    
     answer[deleteCheck].style.color = "green";
+    allBirds[deleteCheck].style.backgroundColor = "green";
     changeScore();
   
   } else {
     answer[deleteCheck].classList.add("bad-answer");
+    allBirds[deleteCheck].style.backgroundColor = "rgb(167, 82, 82)";
     currentScore = currentScore -1
     localStorage.setItem("score", currentScore)
   }
