@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,800;1,300;1,500&display=swap" rel="stylesheet">
 </head>
 <body>
+  
     <header>
         <nav class="nav-header">
             <ul class="nav-list">
@@ -23,31 +24,26 @@
     <main>
        <section class="quiz-header">
         <div class="parent-quiz-header">
-            <div class="div1" id="diff-birds">Разминка</div>
-            <div class="div2" id="diff-birds">Воробьиные</div>
-            <div class="div3" id="diff-birds">Лесные птицы</div>
-            <div class="div4" id="diff-birds">Певчие птицы</div>
-            <div class="div5" id="diff-birds">Хищные птицы</div>
-            <div class="div6" id="diff-birds">Морские птицы</div>
+            <div class="level" id="diff-birds">Разминка</div>
+            <div class="level" id="diff-birds">Воробьиные</div>
+            <div class="level" id="diff-birds">Лесные птицы</div>
+            <div class="level" id="diff-birds">Певчие птицы</div>
+            <div class="level" id="diff-birds">Хищные птицы</div>
+            <div class="level" id="diff-birds">Морские птицы</div>
           </div>
-          <div class="score">0</div>
+          
        </section>
        <section class="current-questions">
         <div class="parent-current-questions">
             <div class="current-img">
                 <img class="current-bird" src="https://birds-quiz.netlify.app/static/media/bird.06a46938.jpg">
             </div>
+            <div class="score">0</div>
             <div class="current-name">******</div>
             <div class="current-song">
                 
                 <div class="player">
-                    <div class="volume_container">
-                      <div class="volumeAll">
-                        <img src="../../assets/images/volumeon.png" class="volumeImg">
-                        <img src="../../assets/images/volumeoff.png" class="volumeImgOff">
-                      </div>
-                      <input type="range" class="volume" min=0 max=100> 
-                    </div>
+                    
                     <div class="progress_container-wrapper">
                         <div class="player-controls">
                             <button class="play player-icon"></button>
@@ -57,11 +53,19 @@
                           <div class="progress"></div>
                         </div>
                     </div>
-                    
                     <div class="time_play">
-                      <div class="currentPlay"></div>
-                      <div class="lengthPlay"></div>
+                      <div class="currentPlay">00:00</div>
+                      <div class="lengthPlay">00:00</div>
                     </div>
+                    <div class="volume_container">
+                      <div class="volumeAll">
+                        <img src="../../assets/images/volumeon.png" class="volumeImg">
+                        <img src="../../assets/images/volumeoff.png" class="volumeImgOff">
+                      </div>
+                      <input type="range" class="volume" min=0 max=100> 
+                    </div>
+                    
+                   
             </div>
         </div>
        </section> 

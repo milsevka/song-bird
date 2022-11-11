@@ -134,13 +134,13 @@ function win() {
     meow.src = birdsData[counter][nowAns].image;
     nameEng.innerHTML = birdsData[counter][nowAns].species;
    
-    answer[deleteCheck].style.color = "green";
-    allBirds[deleteCheck].style.backgroundColor = "green";
+    answer[deleteCheck].style.color = "#1c982c";
+    allBirds[deleteCheck].style.backgroundColor = "#1c982c";
     changeScore();
   
   } else {
     answer[deleteCheck].classList.add("bad-answer");
-    allBirds[deleteCheck].style.backgroundColor = "rgb(167, 82, 82)";
+    allBirds[deleteCheck].style.backgroundColor = "rgb(224, 52, 52)";
     currentScore = currentScore -1
     localStorage.setItem("score", currentScore)
   }
