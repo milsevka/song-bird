@@ -11,9 +11,12 @@ const volumeImg = document.querySelector(".volumeImg");
 const volumeImgOff = document.querySelector(".volumeImgOff");
 const volume = document.querySelector(".volume");
 let next = document.querySelector(".button-next");
+let again = document.querySelector(".button-again");
+
 let counter = 0;
 
 let playNum;
+
 function random() {
   playNum = getRandomIntInclusive(0, 5);
   localStorage.setItem("now", playNum);
@@ -24,8 +27,7 @@ export function music() {
   random();
 
   player.classList.add("meow");
-  buttonPlay.addEventListener("click", toggleBtn)
-
+  buttonPlay.addEventListener("click", toggleBtn);
 
   audio.currentTime = 0;
   function updateCurrentSong() {
@@ -88,28 +90,24 @@ export function music() {
     audio.volume = v / 100;
   }
   document.querySelector(".volume").oninput = audioValue;
- 
-
 
   next.addEventListener("click", () => {
-    let win = localStorage.getItem("win");
-    if (win) {
-      counter++;
-      audio.currentTime = 0;
-      timeAll.textContent = "00:00";
-      
-      pauseAudioNext();
-      
-      toggleBtn();
-      music;
-      updateProgress;
-      setUpdate;
-      clickProgress;
-      random();
-    } else {
-      console.log("nooooooow");
-    }
+    counter++;
+    audio.currentTime = 0;
+    timeAll.textContent = "00:00";
+
+    pauseAudioNext();
+
+    toggleBtn();
+    music;
+    updateProgress;
+    setUpdate;
+    clickProgress;
+    random();
   });
+
+ 
+ 
 }
 music();
 
@@ -144,3 +142,30 @@ export function setUpdate() {
 }
 
 buttonPlay.addEventListener("click", setUpdate);
+
+
+
+
+
+
+// //  function stopMusicWin() {
+//   let win = localStorage.getItem("win");
+//   if (win) {
+//     pauseAudioNext();
+//  }
+// // }
+
+// again.addEventListener("click", () => {
+//   counter = 0;
+//   player.classList.add("meow");
+//   buttonPlay.classList.remove("pause");
+//      audio.currentTime = 0;
+//      timeAll.textContent = "00:00";
+//      pauseAudioNext();
+//      toggleBtn();
+//      music;
+//      updateProgress;
+//      setUpdate;
+//      clickProgress;
+//      random();
+//    });

@@ -1,127 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quis Bird</title>
-    <link  rel="stylesheet" href="./style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,800;1,300;1,500&display=swap" rel="stylesheet">
-</head>
-<body>
-  
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,800;1,300;1,500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <header>
-        <nav class="nav-header">
-            <ul class="nav-list">
-                <li class="nav-item-header"><a href="#">Song Bird</a></li>
-                <li class="nav-item-header"><a href="../home/index.html">Главная</a></li>
-                <li class="nav-item-header">Викторина</li>
-            </ul>
-        </nav>
+      <nav class="nav-header">
+        <ul class="nav-list">
+          <li class="nav-item-header"><a href="#">Song Bird</a></li>
+          <li class="nav-item-header">
+            <a href="../home/index.html">Главная</a>
+          </li>
+          <li class="nav-item-header">Викторина</li>
+        </ul>
+      </nav>
     </header>
     <main>
-       <section class="quiz-header">
+      <section class="quiz-header">
         <div class="parent-quiz-header">
-            <div class="level" id="diff-birds">Разминка</div>
-            <div class="level" id="diff-birds">Воробьиные</div>
-            <div class="level" id="diff-birds">Лесные птицы</div>
-            <div class="level" id="diff-birds">Певчие птицы</div>
-            <div class="level" id="diff-birds">Хищные птицы</div>
-            <div class="level" id="diff-birds">Морские птицы</div>
-          </div>
-          
-       </section>
-       <section class="current-questions">
-        <div class="parent-current-questions">
-            <div class="current-img">
-                <img class="current-bird" src="https://birds-quiz.netlify.app/static/media/bird.06a46938.jpg">
-            </div>
-            <div class="score">0</div>
-            <div class="current-name">******</div>
-            <div class="current-song">
-                
-                <div class="player">
-                    
-                    <div class="progress_container-wrapper">
-                        <div class="player-controls">
-                            <button class="play player-icon"></button>
-                          </div>
-                        <div class="progress_container">
-                           
-                          <div class="progress"></div>
-                        </div>
-                    </div>
-                    <div class="time_play">
-                      <div class="currentPlay">00:00</div>
-                      <div class="lengthPlay">00:00</div>
-                    </div>
-                    <div class="volume_container">
-                      <div class="volumeAll">
-                        <img src="../../assets/images/volumeon.png" class="volumeImg">
-                        <img src="../../assets/images/volumeoff.png" class="volumeImgOff">
-                      </div>
-                      <input type="range" class="volume" min=0 max=100> 
-                    </div>
-                    
-                   
-            </div>
+          <div class="level" id="diff-birds">Разминка</div>
+          <div class="level" id="diff-birds">Воробьиные</div>
+          <div class="level" id="diff-birds">Лесные птицы</div>
+          <div class="level" id="diff-birds">Певчие птицы</div>
+          <div class="level" id="diff-birds">Хищные птицы</div>
+          <div class="level" id="diff-birds">Морские птицы</div>
         </div>
-       </section> 
-       <section class="answer">
+      </section>
+      <section class="current-questions">
+        <div class="parent-current-questions">
+          <div class="current-img">
+            <img
+              class="current-bird"
+              src="https://birds-quiz.netlify.app/static/media/bird.06a46938.jpg"
+            />
+          </div>
+          <div class="score">0</div>
+          <div class="current-name">******</div>
+          <div class="current-song">
+            <div class="player">
+              <div class="progress_container-wrapper">
+                <div class="player-controls">
+                  <button class="play player-icon"></button>
+                </div>
+                <div class="progress_container">
+                  <div class="progress"></div>
+                </div>
+              </div>
+              <div class="time_play">
+                <div class="currentPlay">00:00</div>
+                <div class="lengthPlay">00:00</div>
+              </div>
+              <div class="volume_container">
+                <div class="volumeAll">
+                  <img
+                    src="../../assets/images/volumeon.png"
+                    class="volumeImg"
+                  />
+                  <img
+                    src="../../assets/images/volumeoff.png"
+                    class="volumeImgOff"
+                  />
+                </div>
+                <input type="range" class="volume" min="0" max="100" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="answer">
         <div class="parent-answer">
           <ul class="divcont">
-            <li class="form-check" id="1" >
-                <span class="form-check-input" ></span>
-                  Ворон
-                </li>
+            <li class="form-check" id="1">
+              <span class="form-check-input"></span>
+              Ворон
             </li>
-            <li class="form-check" id="2" >
-              <span class="form-check-input" ></span>
-                Журавль
-              </li>
-          </li>
-          <li class="form-check" id="3" >
-            <span class="form-check-input" ></span>
+            <li class="form-check" id="2">
+              <span class="form-check-input"></span>
+              Журавль
+            </li>
+            <li class="form-check" id="3">
+              <span class="form-check-input"></span>
               Ласточка
             </li>
-        </li>
-        <li class="form-check" id="4" >
-          <span class="form-check-input" ></span>
-            Козодой
-          </li>
-      </li>
-      <li class="form-check" id="5" >
-        <span class="form-check-input" ></span>
-          Кукушка
-        </li>
-    </li>
-    <li class="form-check" id="6" >
-      <span class="form-check-input" ></span>
-        Синица
-      </li>
-  </li>
-            
-            
+            <li class="form-check" id="4">
+              <span class="form-check-input"></span>
+              Козодой
+            </li>
+            <li class="form-check" id="5">
+              <span class="form-check-input"></span>
+              Кукушка
+            </li>
+            <li class="form-check" id="6">
+              <span class="form-check-input"></span>
+              Синица
+            </li>
           </ul>
-         
-            <div class="divcontans">
-           
+
+          <div class="divcontans">
             <div class="answer-img"></div>
             <div class="answer-name-bird"></div>
             <div class="answer-name-eng"></div>
-            <div class="answer-song"></div>
-            <div class="answer-info"><p class="answer-info-text">Послушайте плеер.Выберите птицу из списка</p></div>
+            <div class="answer-song">
+              <div class="current-song">
+                <div class="player">
+                  <div class="progress_container-wrapper">
+                    <div class="player-controls">
+                      <button class="play-current player-icon"></button>
+                    </div>
+                    <div class="progress_container">
+                      <div class="progress"></div>
+                    </div>
+                  </div>
+                  <div class="time_play">
+                    <div class="currentPlay">00:00</div>
+                    <div class="lengthPlay">00:00</div>
+                  </div>
+                  <div class="volume_container">
+                    <div class="volumeAll">
+                      <img
+                        src="../../assets/images/volumeon.png"
+                        class="volumeImg"
+                      />
+                      <img
+                        src="../../assets/images/volumeoff.png"
+                        class="volumeImgOff"
+                      />
+                    </div>
+                    <input type="range" class="volume" min="0" max="100" />
+                  </div>
+                </div>
+              </div>
             </div>
+            <div class="answer-info">
+              <p class="answer-info-text">
+                Послушайте плеер.Выберите птицу из списка
+              </p>
+            </div>
+          </div>
         </div>
-        <button type="button" class="button-next">Следующий вопрос</button>
+        <button type="button" class="button-next" disabled>Следующий вопрос</button>
 
         <div class="wrapper_popup">
           <div class="popup">
-            <div class="feedback_cardpop">
-            </div>
-            <button type="button" class="button-again">попробовать еще раз</button>
+            <div class="feedback_cardpop"></div>
+            <button type="button" class="button-again">
+              Попробовать еще раз
+            </button>
             <div class="close_popup">
               <img
                 src="../../assets/images/clarity_window-close-line.svg"
@@ -131,16 +165,25 @@
             </div>
           </div>
         </div>
-
-       </section> 
+      </section>
     </main>
     <footer>
-        <section class="footer-container">
-        <p class="footer-title"><a href="https://github.com/milsevka"><img class="footer-img" src="../../assets/images/icons8-github.svg"></a></p>
+      <section class="footer-container">
+        <p class="footer-title">
+          <a href="https://github.com/milsevka"
+            ><img
+              class="footer-img"
+              src="../../assets/images/icons8-github.svg"
+          /></a>
+        </p>
         <p class="footer-title">2022</p>
-        <p class="footer-title"><a href="https://rs.school/js/"><img class="footer-img" src="../../assets/images/logo_rs_text.svg"></a></p>
-        </section>
-    </footer> 
+        <p class="footer-title">
+          <a href="https://rs.school/js/"
+            ><img class="footer-img" src="../../assets/images/logo_rs_text.svg"
+          /></a>
+        </p>
+      </section>
+    </footer>
     <script type="module" src="../../assets/js/main.js"></script>
-</body>
+  </body>
 </html>

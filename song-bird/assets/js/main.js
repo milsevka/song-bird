@@ -1,5 +1,5 @@
-import {music, updateProgress, setUpdate, clickProgress, } from './play.js'
+import {music, updateProgress, setUpdate, clickProgress,  } from './play.js'
 import check from './checkBird.js'
-import style from './header.js'
-
+import {style, defaultCounter} from './header.js'
+import { musicCurrent } from './playCurrent.js'
 // import getRandomIntInclusive from './random.js'

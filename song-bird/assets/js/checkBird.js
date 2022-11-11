@@ -1,11 +1,12 @@
 import birdsData from "./list.js";
-import { music, updateProgress, setUpdate, clickProgress } from "./play.js";
+import { music, updateProgress, setUpdate, clickProgress} from "./play.js";
 import getRandomIntInclusive from "./random.js";
-import style from './header.js'
+import {style, defaultCounter} from './header.js'
 
-
+let arrBirds = document.querySelectorAll("#diff-birds")
 const buttonPlay = document.querySelector(".play");
 const player = document.querySelector(".player");
+let answerSong = document.querySelector(".answer-song");
 let mainClick = document.querySelector(".divcont")
 let allBirds = document.querySelectorAll(".form-check-input");
 let nameBird = document.querySelector(".answer-name-bird");
@@ -22,7 +23,7 @@ let score = document.querySelector(".score");
 let wrapperPopup = document.querySelector(".wrapper_popup");
 let textPopup = document.querySelector(".feedback_cardpop")
 let closePopup = document.querySelector(".close_popup")
-let arrayAnswer = document.querySelector(".parent-answer")
+let again = document.querySelector(".button-again")
 
 let counter = 0;
 let deleteCheck;
@@ -37,13 +38,15 @@ let numberBird;
 let counterLevel = 0;
 localStorage.setItem("countLevel", counterLevel)
 
+
+
 export default function check() {
   mainClick.addEventListener("click", (event) => {
   let target = event.target;
  
   if (target.className = "form-check") {
     
-  
+  answerSong.classList.add("answer-song-active")
       meow.className = "answer-img-photo";
       imgBird.append(meow);
       numberBird = target.id - 1
@@ -56,21 +59,21 @@ export default function check() {
         woof = true;
          win();
        } 
-  //   }
-  // } else {
-  //   console.log('now');
-  // }
+
  });
 }
 
 
 next.addEventListener("click", () => {
+  next.disabled = true;
   player.classList.add("meow");
   counterLevel++
   localStorage.setItem("countLevel", counterLevel);
   buttonPlay.classList.remove("pause");
   style();
   if (goNext && counter<= 4) {
+ 
+
     counter++;
     nameCur.innerHTML = "******";
     imgCur.src =
@@ -100,15 +103,23 @@ next.addEventListener("click", () => {
     localStorage.removeItem("win");
 
     for (let i = 0; i < answer.length; i++) {
+      
+      let dot = document.createElement("span")
+      dot.className = "form-check-input"
+     
       answer[i].innerHTML = birdsData[counter][i].name;
+      answer[i].prepend(dot)
       answer[i].style.color = "";
     }
 
     next.classList.remove("button-next-active");
   } else {
+  
     wrapperPopup.classList.add("open-popup");
     textPopup.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов из 30. Жаль, это не максимальное количество. 
     Попробуйте еще раз!`
+    maxScore()
+   
   }
 });
 
@@ -133,14 +144,18 @@ function win() {
     infoBird.innerHTML = birdsData[counter][nowAns].description;
     meow.src = birdsData[counter][nowAns].image;
     nameEng.innerHTML = birdsData[counter][nowAns].species;
-   
+    let alldot = document.querySelectorAll(".form-check-input");
     answer[deleteCheck].style.color = "#1c982c";
     allBirds[deleteCheck].style.backgroundColor = "#1c982c";
+    alldot[deleteCheck].style.backgroundColor = "#1c982c";
+    next.disabled = false;
     changeScore();
   
   } else {
     answer[deleteCheck].classList.add("bad-answer");
     allBirds[deleteCheck].style.backgroundColor = "rgb(224, 52, 52)";
+    let alldotfalse = document.querySelectorAll(".form-check-input");
+    alldotfalse[deleteCheck].style.backgroundColor = "rgb(224, 52, 52)";
     currentScore = currentScore -1
     localStorage.setItem("score", currentScore)
   }
@@ -152,21 +167,74 @@ function changeScore() {
   current = +current + +5;
   counterScore = counterScore + current;
   score.innerHTML = counterScore;
-  if(counterScore === 30) {
-    textPopup.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов из 30 и успешно прошли игру.
-     Возможно, вам стоит стать орнитологом!`
-  }
+  
+ 
 }
 
 closePopup.addEventListener("click" , () => {
   wrapperPopup.classList.remove("open-popup");
 })
 
+function maxScore() {
+  if(counterScore === +30) {
+    textPopup.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов из 30 и успешно прошли игру.
+     Возможно, вам стоит стать орнитологом!`
+again.classList.add("passive")
+  }
+}
+
+
+again.addEventListener("click", () => {
+counter = 0;
+  wrapperPopup.classList.remove("open-popup");
+  nameCur.innerHTML = "******";
+  imgCur.src =
+    "https://birds-quiz.netlify.app/static/media/bird.06a46938.jpg";
+  nameBird.innerHTML = "";
+  infoBird.innerHTML = "Послушайте плеер.Выберите птицу из списка";
+  nameEng.innerHTML = "";
+  meow.remove();
+  
+  woof = false;
+  currentScore = 0;
+  current = 0;
+  
+ defaultCounter();
+music;
+  counterScore = 0;
+  counterLevel = 0;
+  score.innerHTML = counterScore;
+  next.disabled = false;
+  next.innerHTML = "Следующий вопрос";
+  next.classList.remove("button-next-active");
+
+ arrBirds[5].classList.remove("styleLevel")
+ 
+  for (let i = 0; i < answer.length; i++) {
+      
+    let dot = document.createElement("span")
+    dot.className = "form-check-input"
+   
+    answer[i].innerHTML = birdsData[counter][i].name;
+    answer[i].prepend(dot)
+    answer[i].style.color = "";
+  }
+  for (let x = 0; x < allBirds.length; x++) {
+      
+    answer[x].classList.remove("bad-answer");
+  }
+ reset();
+
+})
 
 
 check();
 
-localStorage.removeItem("check");
-localStorage.removeItem("win");
- localStorage.removeItem("countLevel");
- localStorage.removeItem("score");
+function reset() {
+  localStorage.removeItem("check");
+  localStorage.removeItem("win");
+   localStorage.removeItem("countLevel");
+   localStorage.removeItem("score");
+}
+
+reset()
