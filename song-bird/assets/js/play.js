@@ -2,20 +2,21 @@ import birdsData from "./list.js";
 import getRandomIntInclusive from "./random.js";
 
 const audio = new Audio();
-const buttonPlay = document.querySelector(".play");
-const progress = document.querySelector(".progress");
-const progressCont = document.querySelector(".progress_container");
-const timeBit = document.querySelector(".currentPlay");
-const timeAll = document.querySelector(".lengthPlay");
+const buttonPlay = document.querySelector(".play"); 
+const progress = document.querySelector(".progress"); 
+const progressCont = document.querySelector(".progress_container"); 
+const timeBit = document.querySelector(".currentPlay"); 
+const timeAll = document.querySelector(".lengthPlay"); 
 const volumeImg = document.querySelector(".volumeImg");
 const volumeImgOff = document.querySelector(".volumeImgOff");
-const volume = document.querySelector(".volume");
+const volume = document.querySelector(".volume"); 
 let next = document.querySelector(".button-next");
 
 
 let counter = 0;
 
 let playNum;
+let playSave;
 
 function random() {
   playNum = getRandomIntInclusive(0, 5);
@@ -33,14 +34,20 @@ export function music() {
   function updateCurrentSong() {
     counter = localStorage.getItem("counter")
     audio.src = birdsData[counter][playNum].audio;
-    audio.currentTime = 0;
+    // audio.currentTime = currentTime;
     audio.play();
     timeAll.textContent = `${birdsData[counter][playNum].duration}`;
+    playSave = localStorage.getItem("timePlay")
+    if(!playSave) {
+      audio.currentTime = 0;
+    } else {
+      audio.currentTime = playSave;
+    }
   }
   function pauseAudio() {
-    audio.pause();
     player.classList.add("meow");
-    // localStorage.setItem("timePlay", audio.currentTime)
+    audio.pause();
+    localStorage.setItem("timePlay", audio.currentTime)
   }
   function pauseAudioNext() {
     audio.pause();
@@ -65,7 +72,7 @@ export function music() {
       playAudio();
     } else {
       pauseAudio();
-      pauseAudioNext();
+      // pauseAudioNext();
     }
   });
   volumeImg.addEventListener("mouseover", () => {

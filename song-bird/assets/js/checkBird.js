@@ -1,4 +1,5 @@
 import birdsData from "./list.js";
+// import {tryPlay, falsePlay} from "./trueFalsePlay.js";
 import { music, updateProgress, setUpdate, clickProgress} from "./play.js";
 import getRandomIntInclusive from "./random.js";
 import {style, defaultCounter} from './header.js'
@@ -16,7 +17,7 @@ let infoBird = document.querySelector(".answer-info");
 let nameCur = document.querySelector(".current-name");
 let imgCur = document.querySelector(".current-bird");
 let next = document.querySelector(".button-next");
-// let woof = false;
+
 let meow = document.createElement("img");
 let answer = document.querySelectorAll(".form-check");
 let score = document.querySelector(".score");
@@ -66,6 +67,7 @@ export default function check() {
 
 
 next.addEventListener("click", () => {
+  answerSong.classList.remove("answer-song-active")
   next.disabled = true;
   player.classList.add("meow");
   counterLevel++
@@ -96,6 +98,8 @@ next.addEventListener("click", () => {
 
     localStorage.removeItem("check");
     localStorage.removeItem("win");
+    localStorage.removeItem("timePlay");
+    localStorage.removeItem("timePlayCurrent");
 
     for (let i = 0; i < answer.length; i++) {
       
@@ -129,6 +133,7 @@ function win() {
   if (deleteCheck === nowAns) { 
     
     goNext = true;
+    
     localStorage.setItem("win", goNext);
     next.classList.add("button-next-active");
    
@@ -145,15 +150,18 @@ function win() {
     alldot[deleteCheck].style.backgroundColor = "#1c982c";
     next.disabled = false;
     changeScore();
+//  tryPlay()
   
-  } else {
+  } else  {
+    // falsePlay()
     answer[deleteCheck].classList.add("bad-answer");
+    
     allBirds[deleteCheck].style.backgroundColor = "rgb(224, 52, 52)";
     let alldotfalse = document.querySelectorAll(".form-check-input");
     alldotfalse[deleteCheck].style.backgroundColor = "rgb(224, 52, 52)";
     currentScore = currentScore -1
     localStorage.setItem("score", currentScore)
-  }
+  } 
 }
 
 
@@ -229,6 +237,7 @@ function reset() {
   localStorage.removeItem("win");
    localStorage.removeItem("countLevel");
    localStorage.removeItem("score");
+   localStorage.removeItem("timePlay");
 }
 
 reset()

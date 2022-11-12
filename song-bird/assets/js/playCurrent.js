@@ -1,81 +1,154 @@
-const audio = new Audio();
 import birdsData from "./list.js";
-const buttonPlay = document.querySelector(".play-current");
-const progress = document.querySelector(".progress");
-const progressCont = document.querySelector(".progress_container");
-const timeBit = document.querySelector(".currentPlay");
-const timeAll = document.querySelector(".lengthPlay");
-const volumeImg = document.querySelector(".volumeImg");
-const volumeImgOff = document.querySelector(".volumeImgOff");
-const volume = document.querySelector(".volume");
+
+const audioCurrent = new Audio();
+const buttonPlay = document.querySelector(".play-current"); 
+const progress = document.querySelector(".progress-current"); 
+const progressCont = document.querySelector(".progress_container-current"); 
+const timeBit = document.querySelector(".currentPlay-current"); 
+const timeAll = document.querySelector(".lengthPlay-current"); 
+const volumeImg = document.querySelector(".volumeImg-current");
+const volumeImgOff = document.querySelector(".volumeImgOff-current");
+const volume = document.querySelector(".volume-current"); 
+const player = document.querySelector(".player-current");
 let next = document.querySelector(".button-next");
+let mainClick = document.querySelector(".divcont")
+
 let counter = 0;
-const player = document.querySelector(".player");
+
+let playNum;
+let playSaveCurrent;
+
+export function musicCurrent() {
+
+  mainClick.addEventListener("click", (event) => {
+    let target = event.target;
+    if (target.className = "form-check") {
+      audioCurrent.currentTime = 0;
+      audioCurrent.pause();
+      player.classList.add("meow");
+      buttonPlay.classList.remove("pause");
+      localStorage.removeItem("timePlayCurrent");
+    }});
 
 
-export function musicCurrent() {  
   player.classList.add("meow");
-//   buttonPlay.addEventListener("click", toggleBtn)
-  audio.currentTime = 0;
+  buttonPlay.addEventListener("click", toggleBtnCurrent);
+
+  audioCurrent.currentTime = 0;
   function updateCurrentSong() {
-    let playNum = localStorage.getItem("check")
-    audio.src = birdsData[counter][playNum].audio;
-    audio.currentTime = 0;
-    audio.play();
-    timeAll.textContent = `${birdsData[counter][playNum].duration}`;
-  }
-//   function pauseAudio() {
-//     audio.pause();
-//     player.classList.add("meow");
-
-//   }
-//   function pauseAudioNext() {
-//     audio.pause();
-//     player.classList.remove("meow");
+    counter = localStorage.getItem("counter")
+    playNum = localStorage.getItem("check")
+    audioCurrent.src = birdsData[counter][playNum].audio;
     
-//   }
+    audioCurrent.play();
+    timeAll.textContent = `${birdsData[counter][playNum].duration}`;
+    playSaveCurrent = localStorage.getItem("timePlayCurrent")
+    if(!playSaveCurrent) {
+      audioCurrent.currentTime = 0;
+    } else {
+      audioCurrent.currentTime = playSaveCurrent;
+    }
+  }
 
-//   function playAudio() {
-//     updateCurrentSong();
-//     audio.play();
-//     player.classList.remove("meow");
-//   }
-
-//   function toggleBtn() {
-//     buttonPlay.classList.toggle("pause");
+  function pauseAudioCurrent() {
+    audioCurrent.pause();
+    player.classList.add("meow");
+    localStorage.setItem("timePlayCurrent", audioCurrent.currentTime)
+  }
   
-//   }
 
-//   buttonPlay.addEventListener("click", () => {
-//     const isPlay = player.classList.contains("meow");
-//     if (isPlay) {
-//       playAudio();
-//     } else {
-//       pauseAudio();
-//       pauseAudioNext();
-//     }
-//   });
-//   volumeImg.addEventListener("mouseover", () => {
-//     volume.classList.toggle("active");
-//   });
-//   volumeImg.addEventListener("click", () => {
-//     volumeImgOff.classList.add("active");
-//     volumeImg.classList.add("passive");
-//     audio.volume = 0;
-//   });
-//   volumeImgOff.addEventListener("click", () => {
-//     volumeImgOff.classList.remove("active");
-//     volumeImg.classList.remove("passive");
-//     audio.volume = 0.5;
-//   });
+  function playAudioCurrent() {
+    updateCurrentSong();
+    audioCurrent.play();
+    player.classList.remove("meow");
+  }
 
-//   function audioValue() {
-//     let v = this.value;
-//     audio.volume = v / 100;
-//   }
-//   document.querySelector(".volume").oninput = audioValue;
- 
+  function toggleBtnCurrent() {
+    buttonPlay.classList.toggle("pause");
+  
+  }
 
+  buttonPlay.addEventListener("click", () => {
+    const isPlay = player.classList.contains("meow");
+    if (isPlay) {
+      playAudioCurrent();
+    } else {
+      pauseAudioCurrent();
+    }
+  });
+  volumeImg.addEventListener("mouseover", () => {
+    volume.classList.toggle("active");
+  });
+  volumeImg.addEventListener("click", () => {
+    volumeImgOff.classList.add("active");
+    volumeImg.classList.add("passive");
+    audioCurrent.volume = 0;
+  });
+  volumeImgOff.addEventListener("click", () => {
+    volumeImgOff.classList.remove("active");
+    volumeImg.classList.remove("passive");
+    audioCurrent.volume = 0.5;
+  });
+
+  function audioValueCurrent() {
+    let v = this.value;
+    audioCurrent.volume = v / 100;
+  }
+  document.querySelector(".volume-current").oninput = audioValueCurrent;
+
+  function pauseAudioNext() {
+    audioCurrent.pause();
+     player.classList.add("meow");
+    // localStorage.setItem("timePlay", audio.currentTime)
+  }
+
+  next.addEventListener("click", () => {
+   
+    audioCurrent.currentTime = 0;
+    timeAll.textContent = "00:00";
+    pauseAudioNext();
+    toggleBtnCurrent();
+  });
 
 }
-musicCurrent()
+musicCurrent();
+
+export function updateCurrentProgress(e) {
+  const { duration, currentTime } = e.srcElement;
+  const progressPercent = (currentTime / duration) * 100;
+  progress.style.width = `${progressPercent}%`;
+}
+audioCurrent.addEventListener("timeupdate", updateCurrentProgress);
+
+export function clickProgressCurrent(e) {
+  const widthCont = this.clientWidth;
+  const clickX = e.offsetX;
+  const duration = audioCurrent.duration;
+  audioCurrent.currentTime = (clickX / widthCont) * duration;
+}
+progressCont.addEventListener("click", clickProgressCurrent);
+
+export function setUpdateCurrent() {
+  if (!isNaN(audioCurrent.duration)) {
+    let curMin = Math.floor(audioCurrent.currentTime / 60);
+    let curSec = Math.floor(audioCurrent.currentTime - curMin * 60);
+    if (curSec < 10) {
+      curSec = "0" + curSec;
+    }
+    if (curMin < 10) {
+      curMin = "0" + curMin;
+    }
+    timeBit.textContent = curMin + ":" + curSec;
+  }
+  setTimeout(setUpdateCurrent, 1000);
+}
+
+buttonPlay.addEventListener("click", setUpdateCurrent);
+
+
+
+
+
+
+
+
