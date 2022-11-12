@@ -91,10 +91,7 @@ next.addEventListener("click", () => {
     localStorage.setItem("score" , currentScore)
     current = 0;
   
-    for (let x = 0; x < allBirds.length; x++) {
-      
-      answer[x].classList.remove("bad-answer");
-    }
+    
 
     localStorage.removeItem("check");
     localStorage.removeItem("win");
@@ -154,7 +151,7 @@ function win() {
   
   } else  {
     // falsePlay()
-    answer[deleteCheck].classList.add("bad-answer");
+    answer[deleteCheck].style.color = "rgb(224, 52, 52)";
     
     allBirds[deleteCheck].style.backgroundColor = "rgb(224, 52, 52)";
     let alldotfalse = document.querySelectorAll(".form-check-input");
@@ -219,9 +216,7 @@ again.addEventListener("click", () => {
     answer[i].prepend(dot)
     answer[i].style.color = "";
   }
-  for (let x = 0; x < allBirds.length; x++) {
-    answer[x].classList.remove("bad-answer");
-  }
+ 
   reset();
    player.classList.add("meow");
    buttonPlay.classList.remove("pause");
