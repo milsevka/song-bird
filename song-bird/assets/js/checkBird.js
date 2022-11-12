@@ -16,7 +16,7 @@ let infoBird = document.querySelector(".answer-info");
 let nameCur = document.querySelector(".current-name");
 let imgCur = document.querySelector(".current-bird");
 let next = document.querySelector(".button-next");
-let woof = false;
+// let woof = false;
 let meow = document.createElement("img");
 let answer = document.querySelectorAll(".form-check");
 let score = document.querySelector(".score");
@@ -26,6 +26,7 @@ let closePopup = document.querySelector(".close_popup")
 let again = document.querySelector(".button-again")
 
 let counter = 0;
+localStorage.setItem("counter", counter)
 let deleteCheck;
 let goNext = false;
 
@@ -56,7 +57,7 @@ export default function check() {
         infoBird.innerHTML = birdsData[counter][numberBird].description;
         meow.src = birdsData[counter][numberBird].image;
         nameEng.innerHTML = birdsData[counter][numberBird].species;
-        woof = true;
+       
          win();
        } 
 
@@ -72,9 +73,8 @@ next.addEventListener("click", () => {
   buttonPlay.classList.remove("pause");
   style();
   if (goNext && counter<= 4) {
- 
-
     counter++;
+    localStorage.setItem("counter", counter)
     nameCur.innerHTML = "******";
     imgCur.src =
       "https://birds-quiz.netlify.app/static/media/bird.06a46938.jpg";
@@ -83,12 +83,7 @@ next.addEventListener("click", () => {
     nameEng.innerHTML = "";
     meow.remove();
     getRandomIntInclusive(0, 5);
-    music;
-    updateProgress;
-    setUpdate;
-    clickProgress;
-    
-    woof = false;
+  
     deleteCheck = localStorage.getItem("check");
     currentScore = 0;
     localStorage.setItem("score" , currentScore)
@@ -185,7 +180,6 @@ again.classList.add("passive")
 
 
 again.addEventListener("click", () => {
-counter = 0;
   wrapperPopup.classList.remove("open-popup");
   nameCur.innerHTML = "******";
   imgCur.src =
@@ -194,16 +188,16 @@ counter = 0;
   infoBird.innerHTML = "Послушайте плеер.Выберите птицу из списка";
   nameEng.innerHTML = "";
   meow.remove();
-  
-  woof = false;
+  counter = 0;
+  localStorage.setItem("counter", counter)
   currentScore = 0;
   current = 0;
   
  defaultCounter();
-music;
   counterScore = 0;
   counterLevel = 0;
   score.innerHTML = counterScore;
+  goNext = true;
   next.disabled = false;
   next.innerHTML = "Следующий вопрос";
   next.classList.remove("button-next-active");
@@ -211,24 +205,24 @@ music;
  arrBirds[5].classList.remove("styleLevel")
  
   for (let i = 0; i < answer.length; i++) {
-      
     let dot = document.createElement("span")
     dot.className = "form-check-input"
-   
     answer[i].innerHTML = birdsData[counter][i].name;
     answer[i].prepend(dot)
     answer[i].style.color = "";
   }
   for (let x = 0; x < allBirds.length; x++) {
-      
     answer[x].classList.remove("bad-answer");
   }
- reset();
-
+  reset();
+   player.classList.add("meow");
+   buttonPlay.classList.remove("pause");
+  
 })
 
 
 check();
+
 
 function reset() {
   localStorage.removeItem("check");

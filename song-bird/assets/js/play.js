@@ -11,7 +11,7 @@ const volumeImg = document.querySelector(".volumeImg");
 const volumeImgOff = document.querySelector(".volumeImgOff");
 const volume = document.querySelector(".volume");
 let next = document.querySelector(".button-next");
-let again = document.querySelector(".button-again");
+
 
 let counter = 0;
 
@@ -31,6 +31,7 @@ export function music() {
 
   audio.currentTime = 0;
   function updateCurrentSong() {
+    counter = localStorage.getItem("counter")
     audio.src = birdsData[counter][playNum].audio;
     audio.currentTime = 0;
     audio.play();
@@ -55,11 +56,7 @@ export function music() {
 
   function toggleBtn() {
     buttonPlay.classList.toggle("pause");
-    // if(buttonPlay.classList.contains("pause")){
-    //   pauseAudio()
-    // } else {
-    //   playAudio()
-    // }
+  
   }
 
   buttonPlay.addEventListener("click", () => {
@@ -95,17 +92,18 @@ export function music() {
     counter++;
     audio.currentTime = 0;
     timeAll.textContent = "00:00";
-
     pauseAudioNext();
-
     toggleBtn();
-    music;
-    updateProgress;
-    setUpdate;
-    clickProgress;
     random();
   });
 
+  // function stopMusicWin() {
+  //   let win = localStorage.getItem("win");
+  //   console.log(win)
+  //   if (win) {
+  //     pauseAudioNext();
+  //  } 
+  // }
  
  
 }
@@ -148,24 +146,5 @@ buttonPlay.addEventListener("click", setUpdate);
 
 
 
-// //  function stopMusicWin() {
-//   let win = localStorage.getItem("win");
-//   if (win) {
-//     pauseAudioNext();
-//  }
-// // }
 
-// again.addEventListener("click", () => {
-//   counter = 0;
-//   player.classList.add("meow");
-//   buttonPlay.classList.remove("pause");
-//      audio.currentTime = 0;
-//      timeAll.textContent = "00:00";
-//      pauseAudioNext();
-//      toggleBtn();
-//      music;
-//      updateProgress;
-//      setUpdate;
-//      clickProgress;
-//      random();
-//    });
+
