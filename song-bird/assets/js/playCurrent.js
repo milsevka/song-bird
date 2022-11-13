@@ -1,15 +1,15 @@
 import birdsData from "./list.js";
 
 const audioCurrent = new Audio();
-const buttonPlay = document.querySelector(".play-current"); 
-const progress = document.querySelector(".progress-current"); 
-const progressCont = document.querySelector(".progress_container-current"); 
-const timeBit = document.querySelector(".currentPlay-current"); 
-const timeAll = document.querySelector(".lengthPlay-current"); 
-const volumeImg = document.querySelector(".volumeImg-current");
-const volumeImgOff = document.querySelector(".volumeImgOff-current");
-const volume = document.querySelector(".volume-current"); 
-const player = document.querySelector(".player-current");
+const buttonPlay = document.querySelector(".play-current"); //
+const progress = document.querySelector(".progress-current");  //
+const progressCont = document.querySelector(".progress_container-current"); //
+const timeBit = document.querySelector(".currentPlay-current"); //
+const timeAll = document.querySelector(".lengthPlay-current"); //
+const volumeImg = document.querySelector(".volumeImg-current");//
+const volumeImgOff = document.querySelector(".volumeImgOff-current");//
+const volume = document.querySelector(".volume-current"); //
+const player = document.querySelector(".player-current");//
 let next = document.querySelector(".button-next");
 let mainClick = document.querySelector(".divcont")
 

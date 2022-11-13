@@ -28,14 +28,77 @@ rel="icon"
     </header>
     <main>
       <div class="gallery-container">
-        <div class="div1"></div>
-        <div class="div2"></div>
-        <div class="div3"></div>
-        <div class="div4"></div>
-        <div class="div5"></div>
-        <div class="div6"></div>
+        <p>Вы можете нажать на любую карточку и прочитать подробную информацию о птице, а также послушать её голос</p>
+      </div>
+      <div class="wrapper_popup">
+        <div class="popup">
+            <div class="parent-current-questions">
+                <div class="current-img">
+                  <img
+                    class="current-bird"
+                  />
+                </div>
+                <div class="current-name"></div>
+                <div class="answer-name-eng"></div>
+                <div class="current-song">
+                  <div class="player-gallery">
+                    <div class="progress_container-wrapper">
+                      <div class="player-controls">
+                        <button class="play-gallery player-icon"></button>
+                      </div>
+                      <div class="progress_container-gallery">
+                        <div class="progress-gallery"></div>
+                      </div>
+                    </div>
+                    <div class="time_play">
+                      <div class="currentPlay-gallery">00:00</div>
+                      <div class="lengthPlay-gallery">00:00</div>
+                    </div>
+                    <div class="volume_container">
+                      <div class="volumeAll">
+                        <img
+                          src="../../assets/images/volumeon.png"
+                          class="volumeImg-gallery"
+                        />
+                        <img
+                          src="../../assets/images/volumeoff.png"
+                          class="volumeImgOff-gallery"
+                        />
+                      </div>
+                      <input type="range" class="volume-gallery" min="0" max="100" />
+                    </div>
+                  </div>
+                </div>
+                <div class="answer-info">
+                  </div>
+              </div>
+          <div class="close_popup">
+            <img
+              src="../../assets/images/clarity_window-close-line.svg"
+              alt="close"
+              class="close_popup"
+            />
+          </div>
+        </div>
       </div>  
     </main>
+    <footer>
+        <section class="footer-container">
+          <p class="footer-title">
+            <a href="https://github.com/milsevka"
+              ><img
+                class="footer-img"
+                src="../../assets/images/icons8-github.svg"
+            /></a>
+          </p>
+          <p class="footer-title">2022</p>
+          <p class="footer-title">
+            <a href="https://rs.school/js/"
+              ><img class="footer-img" src="../../assets/images/logo_rs_text.svg"
+            /></a>
+          </p>
+        </section>
+      </footer>
     <script type="module" src="../../assets/js/gallery.js"></script>   
 </body>
 </html>

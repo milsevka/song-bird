@@ -2,7 +2,7 @@ import birdsData from "./list.js";
  import {tryPlay, falsePlay} from "./trueFalsePlay.js";
 import getRandomIntInclusive from "./random.js";
 import {style, defaultCounter} from './header.js'
-import {music} from './play.js'
+// import {music} from './play.js'
 
 let arrBirds = document.querySelectorAll("#diff-birds")
 const buttonPlay = document.querySelector(".play");
@@ -47,7 +47,7 @@ let winner = false;
 export default function check() {
   mainClick.addEventListener("click", (event) => {
   let target = event.target;
- 
+ console.log(target)
   if (target.className = "form-check") {
     
   answerSong.classList.add("answer-song-active")

@@ -1,122 +1,59 @@
- import birdsData from "./list.js";
+import birdsData from "./list.js";
+import { musicGallery , updateGalleryProgress, setUpdateGallery, clickProgressGallery } from './playGallery.js'
 
-let containerGallery = document.querySelector(".gallery-container")
-let div1 = document.querySelector(".div1")
-let div2 = document.querySelector(".div2")
-let div3 = document.querySelector(".div3")
-let div4 = document.querySelector(".div4")
-let div5 = document.querySelector(".div5")
-let div6 = document.querySelector(".div6")
+let containerGallery = document.querySelector(".gallery-container");
+let wrapperPopup = document.querySelector(".wrapper_popup");
+let closePopup = document.querySelector(".close_popup")
+let nameCur = document.querySelector(".current-name");
+let imgCur = document.querySelector(".current-bird");
+let infoBird = document.querySelector(".answer-info");
+let nameEng = document.querySelector(".answer-name-eng");
 
 function makeGalery() {
-   
-    for (let i = 0; i <= 5; i++) {
-        let card = document.createElement("div")
-        card.className = "card"
-        let name = document.createElement("p")
-        let nameEn = document.createElement("p")
-        let pic = document.createElement("img")
-        let text = document.createElement("p")
-        pic.className = "photo"
-        name.innerHTML = birdsData[0][i].name;
-        nameEn.innerHTML = birdsData[0][i].species;
-        pic.src = birdsData[0][i].image;
-        text.innerHTML = birdsData[0][i].description;
-        div1.append(card)
-        card.append(name)
-        card.append(nameEn)
-        card.append(pic)
-        card.append(text)
+  for (let i = 0; i < 6; i++) {
+    let cardContainer = document.createElement("div");
+    cardContainer.className = "card-wrapper";
+    cardContainer.id = i;
+    containerGallery.append(cardContainer);
+    for (let j = 0; j < 6; j++) {
+      let card = document.createElement("div");
+      card.className = "card";
+      card.id = birdsData[i][j].id;
+      let name = document.createElement("p");
+      let nameEn = document.createElement("p");
+      let pic = document.createElement("img");
+      pic.className = "photo";
+      name.innerHTML = birdsData[i][j].name;
+      nameEn.innerHTML = birdsData[i][j].species;
+      pic.src = birdsData[i][j].image;
+      cardContainer.append(card);
+      card.append(name);
+      card.append(nameEn);
+      card.append(pic);
     }
-    for (let i = 0; i <= 5; i++) {
-        let card = document.createElement("div")
-        card.className = "card"
-        let name = document.createElement("p")
-        let nameEn = document.createElement("p")
-        let pic = document.createElement("img")
-        let text = document.createElement("p")
-        pic.className = "photo"
-        name.innerHTML = birdsData[1][i].name;
-        nameEn.innerHTML = birdsData[1][i].species;
-        pic.src = birdsData[1][i].image;
-        text.innerHTML = birdsData[1][i].description;
-        div2.append(card)
-        card.append(name)
-        card.append(nameEn)
-        card.append(pic)
-        card.append(text)
-    }
-    for (let i = 0; i <= 5; i++) {
-        let card = document.createElement("div")
-        card.className = "card"
-        let name = document.createElement("p")
-        let nameEn = document.createElement("p")
-        let pic = document.createElement("img")
-        let text = document.createElement("p")
-        pic.className = "photo"
-        name.innerHTML = birdsData[2][i].name;
-        nameEn.innerHTML = birdsData[2][i].species;
-        pic.src = birdsData[2][i].image;
-        text.innerHTML = birdsData[2][i].description;
-        div3.append(card)
-        card.append(name)
-        card.append(nameEn)
-        card.append(pic)
-        card.append(text)
-    }
-    for (let i = 0; i <= 5; i++) {
-        let card = document.createElement("div")
-        card.className = "card"
-        let name = document.createElement("p")
-        let nameEn = document.createElement("p")
-        let pic = document.createElement("img")
-        let text = document.createElement("p")
-        pic.className = "photo"
-        name.innerHTML = birdsData[3][i].name;
-        nameEn.innerHTML = birdsData[3][i].species;
-        pic.src = birdsData[3][i].image;
-        text.innerHTML = birdsData[3][i].description;
-        div4.append(card)
-        card.append(name)
-        card.append(nameEn)
-        card.append(pic)
-        card.append(text)
-    }
-    for (let i = 0; i <= 5; i++) {
-        let card = document.createElement("div")
-        card.className = "card"
-        let name = document.createElement("p")
-        let nameEn = document.createElement("p")
-        let pic = document.createElement("img")
-        let text = document.createElement("p")
-        pic.className = "photo"
-        name.innerHTML = birdsData[4][i].name;
-        nameEn.innerHTML = birdsData[4][i].species;
-        pic.src = birdsData[4][i].image;
-        text.innerHTML = birdsData[4][i].description;
-        div5.append(card)
-        card.append(name)
-        card.append(nameEn)
-        card.append(pic)
-        card.append(text)
-    }
-    for (let i = 0; i <= 5; i++) {
-        let card = document.createElement("div")
-        card.className = "card"
-        let name = document.createElement("p")
-        let nameEn = document.createElement("p")
-        let pic = document.createElement("img")
-        let text = document.createElement("p")
-        pic.className = "photo"
-        name.innerHTML = birdsData[5][i].name;
-        nameEn.innerHTML = birdsData[5][i].species;
-        pic.src = birdsData[5][i].image;
-        text.innerHTML = birdsData[5][i].description;
-        div6.append(card)
-        card.append(name)
-        card.append(nameEn)
-        card.append(pic)
-        card.append(text)
-    }
+  }
 }
-makeGalery()
+makeGalery();
+
+  containerGallery.addEventListener("click", (event) => {
+    let target = event.target;
+    let parent = target.closest(".card")
+    let parentCont = target.closest(".card-wrapper")
+    let numCard = parent.id;
+    localStorage.setItem("card", numCard)
+    let numCon = parentCont.id;
+    localStorage.setItem("container", numCon)
+    wrapperPopup.classList.add("open-popup");
+    nameCur.innerHTML = birdsData[numCon][numCard-1].name;
+    imgCur.src = birdsData[numCon][numCard-1].image;
+    infoBird.innerHTML = birdsData[numCon][numCard-1].description;
+    nameEng.innerHTML = birdsData[numCon][numCard-1].species;
+    // musicGallery()
+  });
+
+
+closePopup.addEventListener("click" , () => {
+    wrapperPopup.classList.remove("open-popup");
+  })
+  
+
