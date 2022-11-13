@@ -247,7 +247,7 @@ border-radius: 5px;
  
 }
 .divcontans {
-  width: 100%;
+  width: 90%;
 }
 .answer-nameandsong {
   width: 100%;
@@ -317,8 +317,9 @@ ul {
 .answer-song-active {
   display: block;
 }
-/* .answer-name-eng {  }
-.answer-song { } */
+.answer-name-bird {
+  border-bottom: 1px solid #adadc4;
+}
 
 .button-next, .button-again {
   width: 100%;

@@ -1,12 +1,14 @@
-const audio = new Audio();
+
 
 export function tryPlay() {
-    audio.src = "../songs/true.mp3";
-    audio.play();
-    audio.currentTime = 0;
-    audio.volume = 1;
+    let audiotry = new Audio();
+    audiotry.src = "../../assets/songs/true.mp3";
+    audiotry.play();
+    audiotry.volume = 0.5;
 }
 export function falsePlay() {
-    audio.src = "../songs/false.mp3";
-    audio.play();
+    let audiofalse = new Audio();
+    audiofalse.src = "../../assets/songs/false.mp3";
+    audiofalse.play();
+    audiofalse.volume = 0.5;
 }

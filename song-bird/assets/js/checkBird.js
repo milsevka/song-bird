@@ -1,6 +1,5 @@
 import birdsData from "./list.js";
-// import {tryPlay, falsePlay} from "./trueFalsePlay.js";
-import { music, updateProgress, setUpdate, clickProgress} from "./play.js";
+ import {tryPlay, falsePlay} from "./trueFalsePlay.js";
 import getRandomIntInclusive from "./random.js";
 import {style, defaultCounter} from './header.js'
 
@@ -90,8 +89,6 @@ next.addEventListener("click", () => {
     currentScore = 0;
     localStorage.setItem("score" , currentScore)
     current = 0;
-  
-    
 
     localStorage.removeItem("check");
     localStorage.removeItem("win");
@@ -147,10 +144,10 @@ function win() {
     alldot[deleteCheck].style.backgroundColor = "#1c982c";
     next.disabled = false;
     changeScore();
-//  tryPlay()
+ tryPlay()
   
   } else  {
-    // falsePlay()
+     falsePlay()
     answer[deleteCheck].style.color = "rgb(224, 52, 52)";
     
     allBirds[deleteCheck].style.backgroundColor = "rgb(224, 52, 52)";
