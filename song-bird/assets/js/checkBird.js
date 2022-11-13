@@ -2,6 +2,7 @@ import birdsData from "./list.js";
  import {tryPlay, falsePlay} from "./trueFalsePlay.js";
 import getRandomIntInclusive from "./random.js";
 import {style, defaultCounter} from './header.js'
+import {music} from './play.js'
 
 let arrBirds = document.querySelectorAll("#diff-birds")
 const buttonPlay = document.querySelector(".play");
@@ -33,12 +34,14 @@ let goNext = false;
 let currentScore = 0;
 let counterScore = 0;
 let current = 0;
-
+let counterWin = 0;
+localStorage.setItem("winNumb", counterWin)
 let numberBird;
 
 let counterLevel = 0;
 localStorage.setItem("countLevel", counterLevel)
 
+let winner = false;
 
 
 export default function check() {
@@ -89,11 +92,14 @@ next.addEventListener("click", () => {
     currentScore = 0;
     localStorage.setItem("score" , currentScore)
     current = 0;
-
+counterWin = 0;
+localStorage.setItem("winNumb" , counterWin)
     localStorage.removeItem("check");
     localStorage.removeItem("win");
     localStorage.removeItem("timePlay");
     localStorage.removeItem("timePlayCurrent");
+    localStorage.removeItem("winner");
+    winner = false;
 
     for (let i = 0; i < answer.length; i++) {
       
@@ -125,9 +131,11 @@ function win() {
     next.innerHTML = "Посмотреть результаты";
   }
   if (deleteCheck === nowAns) { 
-    
+    counterWin = counterWin + 1;
+localStorage.setItem("winNumb", counterWin)
     goNext = true;
-    
+    winner = true;
+    localStorage.setItem("winner" , winner)
     localStorage.setItem("win", goNext);
     next.classList.add("button-next-active");
    
@@ -145,26 +153,30 @@ function win() {
     next.disabled = false;
     changeScore();
  tryPlay()
-  
+  // music()
   } else  {
      falsePlay()
-    answer[deleteCheck].style.color = "rgb(224, 52, 52)";
-    
-    allBirds[deleteCheck].style.backgroundColor = "rgb(224, 52, 52)";
-    let alldotfalse = document.querySelectorAll(".form-check-input");
-    alldotfalse[deleteCheck].style.backgroundColor = "rgb(224, 52, 52)";
-    currentScore = currentScore -1
-    localStorage.setItem("score", currentScore)
+     if(!winner) {
+      answer[deleteCheck].style.color = "rgb(224, 52, 52)";
+      allBirds[deleteCheck].style.backgroundColor = "rgb(224, 52, 52)";
+      let alldotfalse = document.querySelectorAll(".form-check-input");
+      alldotfalse[deleteCheck].style.backgroundColor = "rgb(224, 52, 52)";
+      currentScore = currentScore -1
+      localStorage.setItem("score", currentScore)
+     }
+
   } 
 }
 
 
 function changeScore() {
-  current = localStorage.getItem("score")
-  current = +current + +5;
-  counterScore = counterScore + current;
-  score.innerHTML = counterScore;
-  
+  if(winner) {
+    current = localStorage.getItem("score")
+    current = +current + +5;
+    console.log(`${current} winner `)
+    counterScore = counterScore + current;
+    score.innerHTML = counterScore;
+  } 
  
 }
 
@@ -194,7 +206,9 @@ again.addEventListener("click", () => {
   localStorage.setItem("counter", counter)
   currentScore = 0;
   current = 0;
-  
+  counterWin = 0;
+  winner = false;
+localStorage.setItem("winNumb" , counterWin)
  defaultCounter();
   counterScore = 0;
   counterLevel = 0;
@@ -230,6 +244,8 @@ function reset() {
    localStorage.removeItem("countLevel");
    localStorage.removeItem("score");
    localStorage.removeItem("timePlay");
+   localStorage.removeItem("winner");
+   localStorage.removeItem("winNumb");
 }
 
 reset()

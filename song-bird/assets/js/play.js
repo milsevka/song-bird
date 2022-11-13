@@ -34,7 +34,6 @@ export function music() {
   function updateCurrentSong() {
     counter = localStorage.getItem("counter")
     audio.src = birdsData[counter][playNum].audio;
-    // audio.currentTime = currentTime;
     audio.play();
     timeAll.textContent = `${birdsData[counter][playNum].duration}`;
     playSave = localStorage.getItem("timePlay")
@@ -52,7 +51,6 @@ export function music() {
   function pauseAudioNext() {
     audio.pause();
     player.classList.remove("meow");
-    // localStorage.setItem("timePlay", audio.currentTime)
   }
 
   function playAudio() {
@@ -72,7 +70,6 @@ export function music() {
       playAudio();
     } else {
       pauseAudio();
-      // pauseAudioNext();
     }
   });
   volumeImg.addEventListener("mouseover", () => {
@@ -104,14 +101,13 @@ export function music() {
     random();
   });
 
-  // function stopMusicWin() {
-  //   let win = localStorage.getItem("win");
-  //   console.log(win)
-  //   if (win) {
-  //     pauseAudioNext();
-  //  } 
-  // }
- 
+  function stopMusicWin() {
+    let win = localStorage.getItem("winner");
+    if (win) {
+      pauseAudioNext();
+   } 
+  }
+stopMusicWin();
  
 }
 music();
