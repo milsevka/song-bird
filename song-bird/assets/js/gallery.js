@@ -2,7 +2,7 @@ import birdsData from "./list.js";
 import { musicGallery , updateGalleryProgress, setUpdateGallery, clickProgressGallery } from './playGallery.js'
 
 let containerGallery = document.querySelector(".gallery-container");
-let wrapperPopup = document.querySelector(".wrapper_popup");
+let wrapperPopup = document.querySelector(".wrapper-popup");
 let closePopup = document.querySelector(".close_popup")
 let nameCur = document.querySelector(".current-name");
 let imgCur = document.querySelector(".current-bird");
@@ -55,5 +55,13 @@ makeGalery();
 closePopup.addEventListener("click" , () => {
     wrapperPopup.classList.remove("open-popup");
   })
+
+
+  wrapperPopup.onclick = function (event) {
+    let target = event.target;
+    if (target.className == "wrapper-popup open-popup") {
+      wrapperPopup.classList.remove("open-popup");
+    }
+  };
   
 

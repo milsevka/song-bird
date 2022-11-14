@@ -35,7 +35,7 @@ export function musicCurrent() {
 
   audioCurrent.currentTime = 0;
   function updateCurrentSong() {
-    counter = localStorage.getItem("counter");
+    counter = localStorage.getItem("numberLevel");
     playNum = localStorage.getItem("check");
     audioCurrent.src = birdsData[counter][playNum].audio;
 
