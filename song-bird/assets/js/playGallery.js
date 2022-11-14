@@ -17,7 +17,7 @@ let closePopup = document.querySelector(".close_popup")
 
 export function musicGallery() {
  
-  player.classList.add("meow");
+  player.classList.add("playOn");
   buttonPlay.addEventListener("click", toggleBtnGallery);
   // audioGal.currentTime = 0;
 
@@ -40,7 +40,7 @@ export function musicGallery() {
 
   function pauseAudioGallery() {
     audioGal.pause();
-    player.classList.add("meow");
+    player.classList.add("playOn");
     localStorage.setItem("timePlayGal", audioGal.currentTime)
   }
   
@@ -48,7 +48,7 @@ export function musicGallery() {
   function playAudioGallery() {
     updateGallerySong();
     audioGal.play();
-    player.classList.remove("meow");
+    player.classList.remove("playOn");
   }
 
   function toggleBtnGallery() {
@@ -56,7 +56,7 @@ export function musicGallery() {
   }
 
   buttonPlay.addEventListener("click", () => {
-    const isPlay = player.classList.contains("meow");
+    const isPlay = player.classList.contains("playOn");
     if (isPlay) {
       playAudioGallery();
     } else {

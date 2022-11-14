@@ -2,85 +2,79 @@ import birdsData from "./list.js";
 import getRandomIntInclusive from "./random.js";
 
 const audio = new Audio();
-const buttonPlay = document.querySelector(".play"); 
-const progress = document.querySelector(".progress"); 
-const progressCont = document.querySelector(".progress_container"); 
-const timeBit = document.querySelector(".currentPlay"); 
-const timeAll = document.querySelector(".lengthPlay"); 
+const buttonPlay = document.querySelector(".play");
+const progress = document.querySelector(".progress");
+const progressCont = document.querySelector(".progress-container");
+const timeBit = document.querySelector(".currentPlay");
+const timeAll = document.querySelector(".lengthPlay");
 const volumeImg = document.querySelector(".volumeImg");
 const volumeImgOff = document.querySelector(".volumeImgOff");
-const volume = document.querySelector(".volume"); 
+const volume = document.querySelector(".volume");
 let next = document.querySelector(".button-next");
+let clickAnswer = document.querySelector(".answer-list");
 
+let numberLevel = 0;
 
-let counter = 0;
-
-let playNum;
+let numberSong;
 let playSave;
 
 function random() {
-  playNum = getRandomIntInclusive(0, 5);
-  localStorage.setItem("now", playNum);
+  numberSong = getRandomIntInclusive(0, 5);
+  localStorage.setItem("now", numberSong);
 }
 const player = document.querySelector(".player");
 
 export function music() {
   random();
 
-  player.classList.add("meow");
+  player.classList.add("playOn");
   buttonPlay.addEventListener("click", toggleBtn);
 
   audio.currentTime = 0;
 
   function updateCurrentSong() {
-    counter = localStorage.getItem("counter")
-    let numberSong = localStorage.getItem("winnerNumber")
+    numberLevel = localStorage.getItem("numberLevel");
+    let numberSong = localStorage.getItem("winnerNumber");
 
     if (localStorage.getItem("winnerNumber")) {
-    
-    audio.src = birdsData[0][0].audio;
-    
-    console.log('meow now')
-    timeAll.textContent = `${birdsData[0][0].duration}`;
-    } else {
-    
-      audio.src = birdsData[counter][playNum].audio;
+      audio.src = birdsData[numberLevel][numberSong].audio;
       audio.play();
-      console.log('meow random')
-      timeAll.textContent = `${birdsData[counter][playNum].duration}`;
+      timeAll.textContent = `${birdsData[numberLevel][numberSong].duration}`;
+    } else {
+      audio.src = birdsData[numberLevel][numberSong].audio;
+      audio.play();
+      timeAll.textContent = `${birdsData[numberLevel][numberSong].duration}`;
     }
-     audio.play();
-    playSave = localStorage.getItem("timePlay")
-    if(!playSave) {
+
+    playSave = localStorage.getItem("timePlay");
+    if (!playSave) {
       audio.currentTime = 0;
     } else {
       audio.currentTime = playSave;
     }
   }
   function pauseAudio() {
-    player.classList.add("meow");
+    player.classList.add("playOn");
     audio.pause();
-    localStorage.setItem("timePlay", audio.currentTime)
+    localStorage.setItem("timePlay", audio.currentTime);
   }
   function pauseAudioNext() {
     audio.pause();
-    player.classList.remove("meow");
-    // buttonPlay.classList.remove("pause")
+    player.classList.remove("playOn");
   }
 
   function playAudio() {
     updateCurrentSong();
     audio.play();
-    player.classList.remove("meow");
+    player.classList.remove("playOn");
   }
 
   function toggleBtn() {
     buttonPlay.classList.toggle("pause");
-  
   }
 
   buttonPlay.addEventListener("click", () => {
-    const isPlay = player.classList.contains("meow");
+    const isPlay = player.classList.contains("playOn");
     if (isPlay) {
       playAudio();
     } else {
@@ -109,7 +103,7 @@ export function music() {
   document.querySelector(".volume").oninput = audioValue;
 
   next.addEventListener("click", () => {
-    counter++;
+    numberLevel++;
     audio.currentTime = 0;
     timeAll.textContent = "00:00";
     timeBit.textContent = "00:00";
@@ -120,20 +114,21 @@ export function music() {
   });
 
   function stopMusicWin() {
-  let win = localStorage.getItem("winner");
-   if (win) {
-    // audio.load()
-     buttonPlay.classList.remove("pause")
-     audio.pause();
-    //  audio.src = "";
-    // audio.currentTime = 0;
-    player.classList.add("meow");
-    // localStorage.setItem("timePlay", audio.currentTime)
-    } 
-  } 
-  audio.addEventListener("timeupdate", stopMusicWin);
+    let win = localStorage.getItem("winner");
+    if (win) {
+      buttonPlay.classList.remove("pause");
+      audio.pause();
+      player.classList.add("playOn");
+      localStorage.setItem("timePlay", audio.currentTime);
+    }
+  }
 
-
+  clickAnswer.addEventListener("click", (event) => {
+    let target = event.target;
+    if ((target.className = "form-check")) {
+      setTimeout(stopMusicWin, 500);
+    }
+  });
 }
 music();
 
@@ -169,11 +164,3 @@ export function setUpdate() {
 
 buttonPlay.addEventListener("click", setUpdate);
 localStorage.removeItem("winnerNumber");
-
-
-
-
-
-
-
-

@@ -1,17 +1,17 @@
 import birdsData from "./list.js";
 
 const audioCurrent = new Audio();
-const buttonPlay = document.querySelector(".play-current"); //
-const progress = document.querySelector(".progress-current");  //
-const progressCont = document.querySelector(".progress_container-current"); //
-const timeBit = document.querySelector(".currentPlay-current"); //
-const timeAll = document.querySelector(".lengthPlay-current"); //
-const volumeImg = document.querySelector(".volumeImg-current");//
-const volumeImgOff = document.querySelector(".volumeImgOff-current");//
-const volume = document.querySelector(".volume-current"); //
-const player = document.querySelector(".player-current");//
+const buttonPlay = document.querySelector(".play-current");
+const progress = document.querySelector(".progress-current");
+const progressCont = document.querySelector(".progress-container-current");
+const timeBit = document.querySelector(".currentPlay-current");
+const timeAll = document.querySelector(".lengthPlay-current");
+const volumeImg = document.querySelector(".volumeImg-current");
+const volumeImgOff = document.querySelector(".volumeImgOff-current");
+const volume = document.querySelector(".volume-current");
+const player = document.querySelector(".player-current");
 let next = document.querySelector(".button-next");
-let mainClick = document.querySelector(".divcont")
+let mainClick = document.querySelector(".answer-list");
 
 let counter = 0;
 
@@ -19,31 +19,30 @@ let playNum;
 let playSaveCurrent;
 
 export function musicCurrent() {
-
   mainClick.addEventListener("click", (event) => {
     let target = event.target;
-    if (target.className = "form-check") {
+    if ((target.className = "form-check")) {
       audioCurrent.currentTime = 0;
       audioCurrent.pause();
-      player.classList.add("meow");
+      player.classList.add("playOn");
       buttonPlay.classList.remove("pause");
       localStorage.removeItem("timePlayCurrent");
-    }});
+    }
+  });
 
-
-  player.classList.add("meow");
+  player.classList.add("playOn");
   buttonPlay.addEventListener("click", toggleBtnCurrent);
 
   audioCurrent.currentTime = 0;
   function updateCurrentSong() {
-    counter = localStorage.getItem("counter")
-    playNum = localStorage.getItem("check")
+    counter = localStorage.getItem("counter");
+    playNum = localStorage.getItem("check");
     audioCurrent.src = birdsData[counter][playNum].audio;
-    
+
     audioCurrent.play();
     timeAll.textContent = `${birdsData[counter][playNum].duration}`;
-    playSaveCurrent = localStorage.getItem("timePlayCurrent")
-    if(!playSaveCurrent) {
+    playSaveCurrent = localStorage.getItem("timePlayCurrent");
+    if (!playSaveCurrent) {
       audioCurrent.currentTime = 0;
     } else {
       audioCurrent.currentTime = playSaveCurrent;
@@ -52,24 +51,22 @@ export function musicCurrent() {
 
   function pauseAudioCurrent() {
     audioCurrent.pause();
-    player.classList.add("meow");
-    localStorage.setItem("timePlayCurrent", audioCurrent.currentTime)
+    player.classList.add("playOn");
+    localStorage.setItem("timePlayCurrent", audioCurrent.currentTime);
   }
-  
 
   function playAudioCurrent() {
     updateCurrentSong();
     audioCurrent.play();
-    player.classList.remove("meow");
+    player.classList.remove("playOn");
   }
 
   function toggleBtnCurrent() {
     buttonPlay.classList.toggle("pause");
-  
   }
 
   buttonPlay.addEventListener("click", () => {
-    const isPlay = player.classList.contains("meow");
+    const isPlay = player.classList.contains("playOn");
     if (isPlay) {
       playAudioCurrent();
     } else {
@@ -98,18 +95,16 @@ export function musicCurrent() {
 
   function pauseAudioNext() {
     audioCurrent.pause();
-     player.classList.add("meow");
+    player.classList.add("playOn");
     // localStorage.setItem("timePlay", audio.currentTime)
   }
 
   next.addEventListener("click", () => {
-   
     audioCurrent.currentTime = 0;
     timeAll.textContent = "00:00";
     pauseAudioNext();
     toggleBtnCurrent();
   });
-
 }
 musicCurrent();
 
@@ -144,11 +139,3 @@ export function setUpdateCurrent() {
 }
 
 buttonPlay.addEventListener("click", setUpdateCurrent);
-
-
-
-
-
-
-
-

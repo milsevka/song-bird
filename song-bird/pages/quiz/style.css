@@ -80,7 +80,7 @@ a {
 
 
 
-.parent-current-questions {
+.current-questions-wrapper {
   padding: 5px;
   position: relative;
   grid-column-gap: 10px;
@@ -127,7 +127,7 @@ a {
   
  
 }
-.time_play {
+.time-play {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -167,7 +167,7 @@ a {
   height: 32px;
   cursor: pointer;
 }
-.volume_container,  .volume_container-current {
+.volume-container,  .volume-container-current {
   display: flex;
   gap: 10px;
 }
@@ -199,7 +199,7 @@ input[type="range"] {
 .passive {
   display: none;
 }
-.progress_container, .progress_container-current {
+.progress-container, .progress-container-current {
   width: 100%;
   height: 12px;
   background-color: rgba(179, 191, 199, 0.3);
@@ -210,7 +210,7 @@ input[type="range"] {
   position: relative;
   cursor: pointer;
 }
-.progress_container-wrapper {
+.progress-container-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -241,15 +241,15 @@ border-radius: 5px;
 
 
 
-.parent-answer {
+.answer-wrapper {
   height: 350px;
   gap: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
  
 }
-.divcontans {
+.answer-content {
   width: 90%;
 }
 .answer-nameandsong {
@@ -290,7 +290,7 @@ ul {
   hyphens: auto;
   word-wrap: break-word;
 }
-.divcont {
+.answer-list {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -354,7 +354,7 @@ ul {
   height: 40px;
 }
 
-.wrapper_popup {
+.wrapper-popup {
   position: absolute;
   top: 0;
   left: 0;
@@ -384,7 +384,7 @@ ul {
   position: relative;
   font-size: 40px;
 }
-.close_popup {
+.close-popup-img {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -442,14 +442,14 @@ ul {
     grid-area: 3 / 1 / 4 / 2;
   }
 
-  .parent-answer {
+  .answer-wrapper {
     height: 100%;
     flex-direction: column;
   }
-.divcontans {
+.answer-content {
   width: calc(100% - 20px);
 }
-.divcont {
+.answer-list {
   width: 100%;
   
   margin: 0px;

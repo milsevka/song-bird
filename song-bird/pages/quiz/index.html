@@ -41,16 +41,16 @@
     <main>
       <section class="quiz-header">
         <div class="parent-quiz-header">
-          <div class="level" id="diff-birds">Разминка</div>
-          <div class="level" id="diff-birds">Воробьиные</div>
-          <div class="level" id="diff-birds">Лесные птицы</div>
-          <div class="level" id="diff-birds">Певчие птицы</div>
-          <div class="level" id="diff-birds">Хищные птицы</div>
-          <div class="level" id="diff-birds">Морские птицы</div>
+          <div class="level" id="birds">Разминка</div>
+          <div class="level" id="birds">Воробьиные</div>
+          <div class="level" id="birds">Лесные птицы</div>
+          <div class="level" id="birds">Певчие птицы</div>
+          <div class="level" id="birds">Хищные птицы</div>
+          <div class="level" id="birds">Морские птицы</div>
         </div>
       </section>
       <section class="current-questions">
-        <div class="parent-current-questions">
+        <div class="current-questions-wrapper">
           <div class="current-img">
             <img
               class="current-bird"
@@ -64,20 +64,20 @@
           <div class="current-name">******</div>
           <div class="current-song">
             <div class="player">
-              <div class="progress_container-wrapper">
+              <div class="progress-container-wrapper">
                 <div class="player-controls">
                   <button class="play player-icon"></button>
                 </div>
-                <div class="progress_container">
+                <div class="progress-container">
                   <div class="progress"></div>
                 </div>
               </div>
-              <div class="time_play">
+              <div class="time-play">
                 <div class="currentPlay">00:00</div>
                 <div class="lengthPlay">00:00</div>
               </div>
-              <div class="volume_container">
-                <div class="volumeAll">
+              <div class="volume-container">
+                <div class="volumeImg-wrapper">
                   <img
                     src="../../assets/images/volumeon.png"
                     class="volumeImg"
@@ -94,8 +94,8 @@
         </div>
       </section>
       <section class="answer">
-        <div class="parent-answer">
-          <ul class="divcont">
+        <div class="answer-wrapper">
+          <ul class="answer-list">
             <li class="form-check" id="1">Ворон</li>
             <li class="form-check" id="2">Журавль</li>
             <li class="form-check" id="3">Ласточка</li>
@@ -103,7 +103,7 @@
             <li class="form-check" id="5">Кукушка</li>
             <li class="form-check" id="6">Синица</li>
           </ul>
-          <div class="divcontans">
+          <div class="answer-content">
             <div class="answerInfo">
               <div class="answer-img"></div>
               <div class="answer-nameandsong">
@@ -112,20 +112,20 @@
                 <div class="answer-song">
                   <div class="current-song">
                     <div class="player-current">
-                      <div class="progress_container-wrapper">
+                      <div class="progress-container-wrapper">
                         <div class="player-controls">
                           <button class="play-current player-icon"></button>
                         </div>
-                        <div class="progress_container-current">
+                        <div class="progress-container-current">
                           <div class="progress-current"></div>
                         </div>
                       </div>
-                      <div class="time_play">
+                      <div class="time-play">
                         <div class="currentPlay-current">00:00</div>
                         <div class="lengthPlay-current">00:00</div>
                       </div>
-                      <div class="volume_container-current">
-                        <div class="volumeAll">
+                      <div class="volume-container-current">
+                        <div class="volumeImg-wrapper">
                           <img
                             src="../../assets/images/volumeon.png"
                             class="volumeImg-current"
@@ -159,17 +159,17 @@
           Следующий вопрос
         </button>
 
-        <div class="wrapper_popup">
+        <div class="wrapper-popup">
           <div class="popup">
-            <div class="feedback_cardpop"></div>
+            <div class="popup-content"></div>
             <button type="button" class="button-again">
               Попробовать еще раз
             </button>
-            <div class="close_popup">
+            <div class="close-popup">
               <img
                 src="../../assets/images/clarity_window-close-line.svg"
                 alt="close"
-                class="close_popup"
+                class="close-popup-img"
               />
             </div>
           </div>
