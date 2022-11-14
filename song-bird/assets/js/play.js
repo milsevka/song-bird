@@ -31,11 +31,25 @@ export function music() {
   buttonPlay.addEventListener("click", toggleBtn);
 
   audio.currentTime = 0;
+
   function updateCurrentSong() {
     counter = localStorage.getItem("counter")
-    audio.src = birdsData[counter][playNum].audio;
-    audio.play();
-    timeAll.textContent = `${birdsData[counter][playNum].duration}`;
+    let numberSong = localStorage.getItem("winnerNumber")
+
+    if (localStorage.getItem("winnerNumber")) {
+    
+    audio.src = birdsData[0][0].audio;
+    
+    console.log('meow now')
+    timeAll.textContent = `${birdsData[0][0].duration}`;
+    } else {
+    
+      audio.src = birdsData[counter][playNum].audio;
+      audio.play();
+      console.log('meow random')
+      timeAll.textContent = `${birdsData[counter][playNum].duration}`;
+    }
+     audio.play();
     playSave = localStorage.getItem("timePlay")
     if(!playSave) {
       audio.currentTime = 0;
@@ -51,6 +65,7 @@ export function music() {
   function pauseAudioNext() {
     audio.pause();
     player.classList.remove("meow");
+    // buttonPlay.classList.remove("pause")
   }
 
   function playAudio() {
@@ -72,6 +87,7 @@ export function music() {
       pauseAudio();
     }
   });
+
   volumeImg.addEventListener("mouseover", () => {
     volume.classList.toggle("active");
   });
@@ -96,19 +112,28 @@ export function music() {
     counter++;
     audio.currentTime = 0;
     timeAll.textContent = "00:00";
+    timeBit.textContent = "00:00";
     pauseAudioNext();
     toggleBtn();
     random();
+    localStorage.removeItem("winnerNumber");
   });
 
   function stopMusicWin() {
-    let win = localStorage.getItem("winner");
-    if (win) {
-      pauseAudioNext();
-   } 
-  }
-stopMusicWin();
- 
+  let win = localStorage.getItem("winner");
+   if (win) {
+    // audio.load()
+     buttonPlay.classList.remove("pause")
+     audio.pause();
+    //  audio.src = "";
+    // audio.currentTime = 0;
+    player.classList.add("meow");
+    // localStorage.setItem("timePlay", audio.currentTime)
+    } 
+  } 
+  audio.addEventListener("timeupdate", stopMusicWin);
+
+
 }
 music();
 
@@ -143,6 +168,7 @@ export function setUpdate() {
 }
 
 buttonPlay.addEventListener("click", setUpdate);
+localStorage.removeItem("winnerNumber");
 
 
 
