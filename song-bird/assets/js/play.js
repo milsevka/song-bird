@@ -34,12 +34,12 @@ export function music() {
 
   function updateCurrentSong() {
     numberLevel = localStorage.getItem("numberLevel");
-    let numberSong = localStorage.getItem("winnerNumber");
+    let numberWin = localStorage.getItem("winnerNumber");
 
     if (localStorage.getItem("winnerNumber")) {
-      audio.src = birdsData[numberLevel][numberSong].audio;
+      audio.src = birdsData[numberLevel][numberWin].audio;
       audio.play();
-      timeAll.textContent = `${birdsData[numberLevel][numberSong].duration}`;
+      timeAll.textContent = `${birdsData[numberLevel][numberWin].duration}`;
     } else {
       audio.src = birdsData[numberLevel][numberSong].audio;
       audio.play();
