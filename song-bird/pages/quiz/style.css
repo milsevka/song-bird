@@ -418,7 +418,7 @@ ul {
 }
 
 
-  .parent-current-questions {
+  .current-questions-wrapper {
     height: 300px;
     display: grid;
     grid-template-columns: 1fr;
