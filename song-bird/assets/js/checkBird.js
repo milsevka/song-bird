@@ -145,12 +145,7 @@ function win() {
   } else {
     falsePlay();
     if (!winner) {
-      answer[deleteCheck].classList.add("error");
-    
-      console.log(answer)
-   
       answer[deleteCheck].style.color = "rgb(224, 52, 52)";
-     
       currentScore = currentScore - 1;
       localStorage.setItem("score", currentScore);
       
@@ -158,15 +153,17 @@ function win() {
   }
 }
 
+
+
 function changeScore() {
-  if (winner) {
-   
-  
+  let correctAnswer = localStorage.getItem("winNumb");
+  if (winner && (correctAnswer == 1)) {
     current = localStorage.getItem("score");
     current = +current + +5;
     counterScore = counterScore + current;
     score.innerHTML = counterScore;
-  }}
+  }
+}
 
 
 closePopup.addEventListener("click", () => {

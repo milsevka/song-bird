@@ -15,10 +15,16 @@ a {
 .nav-header {
     width: 60%;
 }
+.logo{
+    width: 150px;
+    height: 70px;
+    object-fit: cover;
+  }
 .nav-list {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
     list-style: none;
     margin-top: 20px;
