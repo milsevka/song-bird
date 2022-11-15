@@ -254,7 +254,7 @@ function win() {
 
     
 
-    answer[deleteCheck].style.color = "#1c982c";
+    answer[deleteCheck].style.color = "rgb(22 177 42)";
 
     next.disabled = false;
     changeScore();
@@ -262,7 +262,7 @@ function win() {
   } else {
     falsePlay();
     if (!winner) {
-      answer[deleteCheck].style.color = "rgb(224, 52, 52)";
+      answer[deleteCheck].style.color = "rgb(137 39 39)";
       currentScore = currentScore - 1;
       localStorage.setItem("score", currentScore);
     }

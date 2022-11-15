@@ -1,7 +1,7 @@
 * {
   padding: 0;
   margin: 0 auto;
-  color: #2b1047;
+  color: rgb(229, 238, 244); 
 }
 body {
   background-image: url("../../assets/images/nature-oblaka-nebo-poristii-minimalizm-157285.jpeg")  ;
@@ -37,6 +37,8 @@ a {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  text-align: center;
+  width: 95%;
   margin-top: 30px;
   
 }
@@ -273,7 +275,16 @@ input[type="range"] {
 .lang-wrapper {
   display: flex;
 }
+@media (max-width: 770px) {
+  .nav-header {
+    width: 90%;
+  }
+  .nav-list {
+    gap: 5px;
+  }
+}
 @media (max-width: 530px) {
+  
   .popup {
    
     width: calc(100% - 50px);

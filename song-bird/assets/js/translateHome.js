@@ -5,13 +5,13 @@ let infotitle1 = document.querySelector(".info-title")
 let specTitle = document.querySelector(".specification-title")
 let specific = document.querySelector(".info-title-specification")
 let choise = document.querySelectorAll(".form-lang-input")
-let woof = document.querySelector(".form-lang")
+let choiseContainer = document.querySelector(".choise-input")
 let navList = document.querySelectorAll(".nav-text")
 
  function lang() {
   choise.forEach(el => {
     el.onchange = () => localStorage.setItem("lang", el.id);
-    if(!localStorage.getItem("lang")) {
+    if(!localStorage.getItem("lang") || (localStorage.getItem("lang") == "ru" )) {
       document.getElementById("ru").checked = true;
       navList[0].innerHTML = "Главная";
       navList[1].innerHTML = "Викторина";
@@ -45,19 +45,15 @@ let navList = document.querySelectorAll(".nav-text")
   })
 }
 
+choiseContainer.addEventListener("click", (event) => {
+  let target = event.target;
+  if ((target.className = "form-lang-input") && (target.className = "form-lang-label")) {
+    setTimeout(lang, 500);
+  }
+});
+
+
 letsgo.addEventListener('click', lang);
-
-// woof.addEventListener('click', () => {
-//   meow()
-// });
-
-// function meow() {
-//   Array.from(document.querySelectorAll(".form-lang-input")).forEach(function(el){
-//     el.onchange = function(){
-//       console.log(el.id)
-//     }
-//   })
-// }
 
 
 
