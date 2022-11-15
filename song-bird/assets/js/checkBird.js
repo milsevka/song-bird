@@ -6,10 +6,7 @@ import getRandomIntInclusive from "./random.js";
 import { style, defaultCounter } from "./header.js";
 
 
-document.querySelectorAll(".form-lang-input").forEach(el => {
-  el.checked = localStorage.getItem(el.id) === "true";
-  el.onchange = () => localStorage.setItem(el.id, el.checked);
-})
+
 
 let arrBirds = document.querySelectorAll("#birds");
 const buttonPlay = document.querySelector(".play");
@@ -52,17 +49,17 @@ localStorage.setItem("countLevel", counterLevel);
 let winner = false;
 
 for (let i = 0; i < answer.length; i++) {
-  if(document.getElementById("ru").checked) {
+  if(localStorage.getItem("lang") == "ru") {
     answer[i].innerHTML = birdsData[numberLevel][i].name;
     infoBird.innerHTML = "Послушайте плеер.Выберите птицу из списка";
     next.innerHTML = "Следующий вопрос";
     mainScore.textContent = "Счёт:"
-} else if ((document.getElementById("en").checked)) {
+} else if (localStorage.getItem("lang") == "en") {
   answer[i].innerHTML = birdsDataEn[numberLevel][i].name;
   infoBird.innerHTML = "Listen to the player. Choose a bird from the list";
   next.innerHTML = "Next question";
   mainScore.textContent = "Score:";
-} else if ((document.getElementById("be").checked)) {
+} else if (localStorage.getItem("lang") == "be") {
   answer[i].innerHTML = birdsDataBy[numberLevel][i].name;
   infoBird.innerHTML = "Паслухайце плэер. Выберыце птушку са спісу";
   next.innerHTML = "Наступнае пытанне";
@@ -81,14 +78,14 @@ export default function check() {
       numberBird = target.id - 1;
 
       localStorage.setItem("check", numberBird);
-      if(document.getElementById("ru").checked) {
+      if(localStorage.getItem("lang") == "ru") {
           nameBird.innerHTML = birdsData[numberLevel][numberBird].name;
           infoBird.innerHTML = birdsData[numberLevel][numberBird].description;
-      } else if ((document.getElementById("en").checked)) {
+      } else if (localStorage.getItem("lang") == "en") {
         nameBird.innerHTML = birdsDataEn[numberLevel][numberBird].name;
         infoBird.innerHTML = birdsDataEn[numberLevel][numberBird].description;
       }
-      else if ((document.getElementById("be").checked)) {
+      else if (localStorage.getItem("lang") == "be") {
         nameBird.innerHTML = birdsDataBy[numberLevel][numberBird].name;
         infoBird.innerHTML = birdsDataBy[numberLevel][numberBird].description;
       }
@@ -114,11 +111,11 @@ next.addEventListener("click", () => {
     imgCur.src =
       "https://birds-quiz.netlify.app/static/media/bird.06a46938.jpg";
     nameBird.innerHTML = "";
-    if(document.getElementById("ru").checked) {
+    if(localStorage.getItem("lang") == "ru") {
       infoBird.innerHTML = "Послушайте плеер.Выберите птицу из списка";
-  } else if ((document.getElementById("en").checked)) {
+  } else if (localStorage.getItem("lang") == "en") {
     infoBird.innerHTML = "Listen to the player. Choose a bird from the list";
-  } else if ((document.getElementById("be").checked)) {
+  } else if (localStorage.getItem("lang") == "be") {
     infoBird.innerHTML = "Паслухайце плэер. Выберыце птушку са спісу";
   }
     
@@ -141,10 +138,12 @@ next.addEventListener("click", () => {
 
     for (let i = 0; i < answer.length; i++) {
 
-      if(document.getElementById("ru").checked) {
+      if(localStorage.getItem("lang") == "ru") {
         answer[i].innerHTML = birdsData[numberLevel][i].name;
-    } else if ((document.getElementById("en").checked)) {
+    } else if (localStorage.getItem("lang") == "en") {
       answer[i].innerHTML = birdsDataEn[numberLevel][i].name;
+    } else if (localStorage.getItem("lang") == "be") {
+      answer[i].innerHTML = birdsDataBy[numberLevel][i].name;
     }
       
       answer[i].style.color = "";
@@ -153,13 +152,13 @@ next.addEventListener("click", () => {
     next.classList.remove("button-next-active");
   } else {
     wrapperPopup.classList.add("open-popup");
-    if(document.getElementById("ru").checked) {
+    if(localStorage.getItem("lang") == "ru") {
       textPopup.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов из 30. Жаль, это не максимальное количество. 
       Попробуйте еще раз!`;
-  } else if ((document.getElementById("en").checked)) {
+  } else if (localStorage.getItem("lang") == "en") {
     textPopup.innerHTML = `Congratulations! You scored ${counterScore} points out of 30. Too bad that's not the maximum.
     Try again!`;
-  } else if ((document.getElementById("be").checked)) {
+  } else if (localStorage.getItem("lang") == "be") {
     textPopup.innerHTML = `Віншуем! Вы набралі ${counterScore} балаў з 30. Шкада, гэта не максімальная колькасць.
     Паспрабуйце яшчэ раз!`;
   }
@@ -172,11 +171,11 @@ function win() {
   deleteCheck = localStorage.getItem("check");
   let nowAns = localStorage.getItem("now");
   if (counterLevel === 5) {
-    if(document.getElementById("ru").checked) {
+    if(localStorage.getItem("lang") == "ru") {
       next.innerHTML = "Посмотреть результаты";
-  } else if ((document.getElementById("en").checked)) {
+  } else if (localStorage.getItem("lang") == "en") {
     next.innerHTML = "View results";
-  } else if ((document.getElementById("be").checked)) {
+  } else if (localStorage.getItem("lang") == "be") {
     next.innerHTML = "Паглядзець вынікі";
   }
   }
@@ -190,7 +189,7 @@ function win() {
     localStorage.setItem("win", goNext);
     next.classList.add("button-next-active");
 
-    if(document.getElementById("ru").checked) {
+    if(localStorage.getItem("lang") == "ru") {
       nameCur.innerHTML = birdsData[numberLevel][nowAns].name;
     imgCur.src = birdsData[numberLevel][nowAns].image;
 
@@ -198,7 +197,7 @@ function win() {
     infoBird.innerHTML = birdsData[numberLevel][nowAns].description;
     meow.src = birdsData[numberLevel][nowAns].image;
     nameEng.innerHTML = birdsData[numberLevel][nowAns].species;
-    } else if ((document.getElementById("en").checked)) {
+    } else if (localStorage.getItem("lang") == "en") {
       nameCur.innerHTML = birdsDataEn[numberLevel][nowAns].name;
       imgCur.src = birdsDataEn[numberLevel][nowAns].image;
   
@@ -206,7 +205,7 @@ function win() {
       infoBird.innerHTML = birdsDataEn[numberLevel][nowAns].description;
       meow.src = birdsDataEn[numberLevel][nowAns].image;
       nameEng.innerHTML = birdsDataEn[numberLevel][nowAns].species;
-    } else if ((document.getElementById("be").checked)) {
+    } else if (localStorage.getItem("lang") == "be") {
       nameCur.innerHTML = birdsDataBy[numberLevel][nowAns].name;
       imgCur.src = birdsDataBy[numberLevel][nowAns].image;
   
@@ -249,13 +248,13 @@ closePopup.addEventListener("click", () => {
 
 function maxScore() {
   if (counterScore === +30) {
-    if(document.getElementById("ru").checked) {
+    if(localStorage.getItem("lang") == "ru") {
       textPopup.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов из 30 и успешно прошли игру.
      Возможно, вам стоит стать орнитологом!`;
-  } else if ((document.getElementById("en").checked)) {
+  } else if (localStorage.getItem("lang") == "en") {
     textPopup.innerHTML = `Congratulations! You scored ${counterScore} points out of 30 and successfully completed the game.
     Maybe you should become an ornithologist!`;
-  } else if ((document.getElementById("be").checked)) {
+  } else if (localStorage.getItem("lang") == "be") {
     textPopup.innerHTML = `Віншуем! Вы набралі ${counterScore} балаў з 30 і паспяхова прайшлі гульню.
     Магчыма, вам варта стаць арнітолагам!`;
   }
@@ -268,13 +267,13 @@ again.addEventListener("click", () => {
   nameCur.innerHTML = "******";
   imgCur.src = "https://birds-quiz.netlify.app/static/media/bird.06a46938.jpg";
   nameBird.innerHTML = "";
-  if(document.getElementById("ru").checked) {
+  if(localStorage.getItem("lang") == "ru") {
     infoBird.innerHTML = "Послушайте плеер. Выберите птицу из списка";
     next.innerHTML = "Следующий вопрос";
-} else if ((document.getElementById("en").checked)) {
+} else if (localStorage.getItem("lang") == "en") {
   infoBird.innerHTML = "Listen to the player. Choose a bird from the list";
   next.innerHTML = "Next question";
-} else if ((document.getElementById("be").checked)) {
+} else if (localStorage.getItem("lang") == "be") {
   infoBird.innerHTML = "Паслухайце плэер. Выберыце птушку са спісу";
   next.innerHTML = "Наступнае пытанне";
 }
@@ -300,10 +299,12 @@ again.addEventListener("click", () => {
   arrBirds[5].classList.remove("styleLevel");
 
   for (let i = 0; i < answer.length; i++) {
-    if(document.getElementById("ru").checked) {
+    if(localStorage.getItem("lang") == "ru") {
       answer[i].innerHTML = birdsData[numberLevel][i].name;
-  } else if ((document.getElementById("en").checked)) {
+  } else if (localStorage.getItem("lang") == "en") {
     answer[i].innerHTML = birdsDataEn[numberLevel][i].name;
+  } else if (localStorage.getItem("lang") == "be") {
+    answer[i].innerHTML = birdsDataBy[numberLevel][i].name;
   }
     
     answer[i].style.color = "";

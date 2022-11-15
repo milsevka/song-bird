@@ -3,10 +3,6 @@ import birdsDataEn from "./listEn.js";
 import birdsDataBy from "./listBlr.js";
 import { musicGallery , updateGalleryProgress, setUpdateGallery, clickProgressGallery } from './playGallery.js'
 
-document.querySelectorAll(".form-lang-input").forEach(el => {
-  el.checked = localStorage.getItem(el.id) === "true";
-  el.onchange = () => localStorage.setItem(el.id, el.checked);
-})
 
 let containerGallery = document.querySelector(".gallery-container");
 let galleryText = document.querySelector(".gallery-text")
@@ -17,11 +13,11 @@ let imgCur = document.querySelector(".current-bird");
 let infoBird = document.querySelector(".answer-info");
 let nameEng = document.querySelector(".answer-name-eng");
 
-if(document.getElementById("ru").checked) {
+if(localStorage.getItem("lang") == "ru") {
   galleryText.innerHTML = "Вы можете нажать на любую карточку и прочитать подробную информацию о птице, а также послушать её голос";
-} else if ((document.getElementById("en").checked)) {
+} else if (localStorage.getItem("lang") == "en") {
   galleryText.innerHTML = "You can click on any card and read detailed information about the bird, as well as listen to its voice";
-} else if ((document.getElementById("be").checked)) {
+} else if (localStorage.getItem("lang") == "be") {
   galleryText.innerHTML = "Вы можаце націснуць на любую картку і прачытаць падрабязную інфармацыю аб птушцы, а таксама паслухаць яе голас"
 }
 
@@ -40,13 +36,13 @@ function makeGalery() {
       let nameEn = document.createElement("p");
       let pic = document.createElement("img");
       pic.className = "photo";
-      if(document.getElementById("ru").checked) {
+      if(localStorage.getItem("lang") == "ru") {
         name.innerHTML = birdsData[i][j].name;
         nameEn.innerHTML = birdsData[i][j].species;
-      } else if ((document.getElementById("en").checked)) {
+      } else if (localStorage.getItem("lang") == "en") {
         name.innerHTML = birdsDataEn[i][j].name;
         nameEn.innerHTML = birdsDataEn[i][j].species;
-      } else if ((document.getElementById("be").checked)) {
+      } else if (localStorage.getItem("lang") == "be") {
         name.innerHTML = birdsDataBy[i][j].name;
         nameEn.innerHTML = birdsDataBy[i][j].species;
       }
@@ -72,13 +68,13 @@ makeGalery();
     let numCon = parentCont.id;
     localStorage.setItem("container", numCon)
     wrapperPopup.classList.add("open-popup");
-    if(document.getElementById("ru").checked) {
+    if(localStorage.getItem("lang") == "ru") {
       nameCur.innerHTML = birdsData[numCon][numCard-1].name;
       infoBird.innerHTML = birdsData[numCon][numCard-1].description;
-    } else if ((document.getElementById("en").checked)) {
+    } else if (localStorage.getItem("lang") == "en") {
       nameCur.innerHTML = birdsDataEn[numCon][numCard-1].name;
       infoBird.innerHTML = birdsDataEn[numCon][numCard-1].description;
-    } else if ((document.getElementById("be").checked)) {
+    } else if (localStorage.getItem("lang") == "be") {
       nameCur.innerHTML = birdsDataBy[numCon][numCard-1].name;
       infoBird.innerHTML = birdsDataBy[numCon][numCard-1].description;
     }
