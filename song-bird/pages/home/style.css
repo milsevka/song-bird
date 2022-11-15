@@ -93,6 +93,9 @@ a {
     width: 50px;
     height: 40px;
 }
+.lang-wrapper {
+    display: flex;
+  }
 @media (max-width: 600px) {
     .nav-header, .footer-container, .greetings, .about-quiz  {
         width: 80%;

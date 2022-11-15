@@ -48,7 +48,28 @@ rel="icon"
                     4. Если ответ неверный - загорается красный свет, но ты всё еще можешь выбрать 
                         правильный ответ.
             </p>
-            <button type="button" class="button-play"><a href="../quiz/index.html">Играть</a></button>
+            <div class="lang-wrapper">
+              <p>Пожалуйста, выберите язык игры</p>
+              <div class="form-lang">
+                <input class="form-lang-input" type="radio" name="exampleRadios" id="ru" value="option1" checked>
+                <label class="form-lang-label" for="exampleRadios1">
+                  Ru
+                </label>
+              </div>
+              <div class="form-lang">
+                <input class="form-lang-input" type="radio" name="exampleRadios" id="en" value="option2">
+                <label class="form-lang-label" for="exampleRadios2">
+                  En
+                </label>
+              </div>
+              <div class="form-lang">
+                <input class="form-lang-input" type="radio" name="exampleRadios" id="be" value="option3">
+                <label class="form-lang-label" for="exampleRadios3">
+                  Be
+                </label>
+              </div>
+            </div>
+            <button type="button" class="button-play" onclick="document.location='../quiz/index.html'">Играть</button>
         </section>
     </main>
     <footer>
@@ -58,5 +79,6 @@ rel="icon"
         <p class="footer-title"><a href="https://rs.school/js/"><img class="footer-img" src="../../assets/images/logo_rs_text.svg"></a></p>
         </section>
     </footer>
+    <script  src="../../assets/js/start.js"></script>
 </body>
 </html>

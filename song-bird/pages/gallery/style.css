@@ -257,6 +257,9 @@ input[type="range"] {
 .answer-info {
   font-size: 20px;
 }
+.lang-wrapper {
+  display: flex;
+}
 @media (max-width: 530px) {
   .popup {
    
