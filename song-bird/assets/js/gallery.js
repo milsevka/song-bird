@@ -12,12 +12,22 @@ let nameCur = document.querySelector(".current-name");
 let imgCur = document.querySelector(".current-bird");
 let infoBird = document.querySelector(".answer-info");
 let nameEng = document.querySelector(".answer-name-eng");
+let navList = document.querySelectorAll(".nav-text")
 
 if(localStorage.getItem("lang") == "ru") {
+  navList[0].innerHTML = "Главная";
+  navList[1].innerHTML = "Викторина";
+  navList[2].innerHTML = "Галерея";
   galleryText.innerHTML = "Вы можете нажать на любую карточку и прочитать подробную информацию о птице, а также послушать её голос";
 } else if (localStorage.getItem("lang") == "en") {
+  navList[0].innerHTML = "Нome";
+  navList[1].innerHTML = "Quiz";
+  navList[2].innerHTML = "Gallery";
   galleryText.innerHTML = "You can click on any card and read detailed information about the bird, as well as listen to its voice";
 } else if (localStorage.getItem("lang") == "be") {
+  navList[0].innerHTML = "Галоўная";
+    navList[1].innerHTML = "Віктарына";
+    navList[2].innerHTML = "Галерэя";
   galleryText.innerHTML = "Вы можаце націснуць на любую картку і прачытаць падрабязную інфармацыю аб птушцы, а таксама паслухаць яе голас"
 }
 

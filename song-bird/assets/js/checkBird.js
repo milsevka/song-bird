@@ -30,6 +30,7 @@ let wrapperPopup = document.querySelector(".wrapper-popup");
 let textPopup = document.querySelector(".popup-content");
 let closePopup = document.querySelector(".close-popup");
 let again = document.querySelector(".button-again");
+let navList = document.querySelectorAll(".nav-text")
 
 let numberLevel = 0;
 localStorage.setItem("numberLevel", numberLevel);
@@ -66,6 +67,39 @@ for (let i = 0; i < answer.length; i++) {
   mainScore.textContent = "Рахунак:";
 } 
 }
+
+
+  if(localStorage.getItem("lang") == "ru") {
+    arrBirds[0].innerHTML = "Разминка";
+    arrBirds[1].innerHTML = "Воробьиные";
+    arrBirds[2].innerHTML = "Лесные птицы";
+    arrBirds[3].innerHTML = "Певчие птицы";
+    arrBirds[4].innerHTML = "Хищные птицы";
+    arrBirds[5].innerHTML = "Морские птицы";
+    navList[0].innerHTML = "Главная";
+    navList[1].innerHTML = "Викторина";
+    navList[2].innerHTML = "Галерея";
+} else if (localStorage.getItem("lang") == "en") {
+  arrBirds[0].innerHTML = "Different";
+  arrBirds[1].innerHTML = "Sparrows";
+  arrBirds[2].innerHTML = "Forest birds";
+  arrBirds[3].innerHTML = "Songbirds";
+  arrBirds[4].innerHTML = "Predator birds";
+  arrBirds[5].innerHTML = "Sea birds";
+  navList[0].innerHTML = "Нome";
+    navList[1].innerHTML = "Quiz";
+    navList[2].innerHTML = "Gallery";
+} else if (localStorage.getItem("lang") == "be") {
+  arrBirds[0].innerHTML = "Размінка";
+  arrBirds[1].innerHTML = "Вераб'іныя";
+  arrBirds[2].innerHTML = "Лясныя птушкі";
+  arrBirds[3].innerHTML = "Пявучыя птушкі";
+  arrBirds[4].innerHTML = "Драпежныя птушкі";
+  arrBirds[5].innerHTML = "Марскія птушкі";
+  navList[0].innerHTML = "Галоўная";
+    navList[1].innerHTML = "Віктарына";
+    navList[2].innerHTML = "Галерэя";
+} 
 
 
 export default function check() {
@@ -155,12 +189,15 @@ next.addEventListener("click", () => {
     if(localStorage.getItem("lang") == "ru") {
       textPopup.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов из 30. Жаль, это не максимальное количество. 
       Попробуйте еще раз!`;
+      again.innerHTML = "Попробовать еще раз";
   } else if (localStorage.getItem("lang") == "en") {
     textPopup.innerHTML = `Congratulations! You scored ${counterScore} points out of 30. Too bad that's not the maximum.
     Try again!`;
+    again.innerHTML = "To try one more time";
   } else if (localStorage.getItem("lang") == "be") {
     textPopup.innerHTML = `Віншуем! Вы набралі ${counterScore} балаў з 30. Шкада, гэта не максімальная колькасць.
     Паспрабуйце яшчэ раз!`;
+    again.innerHTML = "Паспрабаваць яшчэ раз";
   }
     
     maxScore();

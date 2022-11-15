@@ -5,12 +5,17 @@ let infotitle1 = document.querySelector(".info-title")
 let specTitle = document.querySelector(".specification-title")
 let specific = document.querySelector(".info-title-specification")
 let choise = document.querySelectorAll(".form-lang-input")
+let woof = document.querySelector(".form-lang")
+let navList = document.querySelectorAll(".nav-text")
 
  function lang() {
   choise.forEach(el => {
     el.onchange = () => localStorage.setItem("lang", el.id);
     if(!localStorage.getItem("lang")) {
       document.getElementById("ru").checked = true;
+      navList[0].innerHTML = "Главная";
+      navList[1].innerHTML = "Викторина";
+      navList[2].innerHTML = "Галерея";
       title1.innerHTML = "Привет, друг! Это викторина Song Bird.";
       letsgo.innerHTML = "Играть"
       specTitle.innerHTML = "Правила викторины простые:";
@@ -18,6 +23,9 @@ let choise = document.querySelectorAll(".form-lang-input")
       infotitle1.innerHTML = "Последние  исследования ученых показали, что в мире живут примерно 50 миллиардов птиц, относящихся к 9700 видам. Самыми распространенными стали домовые воробьи (1,6 миллиарда особей), обыкновенные скворцы (1,3 миллиарда особей), делавэрские чайки (1,2 миллиарда особей) и деревенские ласточки (1,1 миллиарда особей).<br> Знаешь ли ты их голоса?";
     } else if (localStorage.getItem("lang") == "en" ) {
       document.getElementById("en").checked = true;
+      navList[0].innerHTML = "Нome";
+  navList[1].innerHTML = "Quiz";
+  navList[2].innerHTML = "Gallery";
       title1.innerHTML = "Hi, friend! This is a Song Bird quiz.";
       letsgo.innerHTML = "Play"
       specTitle.innerHTML = "The rules of the quiz are simple:";
@@ -25,6 +33,9 @@ let choise = document.querySelectorAll(".form-lang-input")
       infotitle1.innerHTML = "The latest research by scientists show that there are approximately 50 billion birds belonging to 9,700 species live in the world.<br>House sparrows are the most common(1.6 billion individuals), common starlings(1.3 billion individuals), Delaware gulls (1.2 billion individuals) and barn swallows (1.1 billion individuals).<br> Do you know their voices?";
     } else if (localStorage.getItem("lang") == "be" ) {
       document.getElementById("be").checked = true;
+      navList[0].innerHTML = "Галоўная";
+  navList[1].innerHTML = "Віктарына";
+  navList[2].innerHTML = "Галерэя";
       title1.innerHTML = "Прывітанне сябар! Гэта віктарына Song Bird.";
       letsgo.innerHTML = "Гуляць"
       specTitle.innerHTML = "Правілы віктарыны простыя:";
@@ -34,15 +45,21 @@ let choise = document.querySelectorAll(".form-lang-input")
   })
 }
 
-
-
 letsgo.addEventListener('click', lang);
 
-Array.from(document.querySelectorAll(".form-lang-input")).forEach(function(el){
-  el.onchange = function(){
-    console.log('meow')
-  }
-})
+// woof.addEventListener('click', () => {
+//   meow()
+// });
+
+// function meow() {
+//   Array.from(document.querySelectorAll(".form-lang-input")).forEach(function(el){
+//     el.onchange = function(){
+//       console.log(el.id)
+//     }
+//   })
+// }
+
+
 
 
 window.addEventListener('load', lang)
@@ -55,3 +72,4 @@ window.addEventListener('load',  function() {
 });
 
  //localStorage.removeItem("lang")
+
