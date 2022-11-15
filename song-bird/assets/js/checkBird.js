@@ -143,7 +143,7 @@ next.addEventListener("click", () => {
     localStorage.setItem("numberLevel", numberLevel);
     nameCur.innerHTML = "******";
     imgCur.src =
-      "https://birds-quiz.netlify.app/static/media/bird.06a46938.jpg";
+      "../../assets/images/pngwing.com (1).png";
     nameBird.innerHTML = "";
     if(localStorage.getItem("lang") == "ru") {
       infoBird.innerHTML = "Послушайте плеер.Выберите птицу из списка";
@@ -302,7 +302,7 @@ function maxScore() {
 again.addEventListener("click", () => {
   wrapperPopup.classList.remove("open-popup");
   nameCur.innerHTML = "******";
-  imgCur.src = "https://birds-quiz.netlify.app/static/media/bird.06a46938.jpg";
+  imgCur.src = "../../assets/images/pngwing.com (1).png";
   nameBird.innerHTML = "";
   if(localStorage.getItem("lang") == "ru") {
     infoBird.innerHTML = "Послушайте плеер. Выберите птицу из списка";
