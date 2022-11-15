@@ -95,6 +95,7 @@ a {
 }
 .lang-wrapper {
     display: flex;
+    margin-top: 10px;
   }
 @media (max-width: 600px) {
     .nav-header, .footer-container, .greetings, .about-quiz  {
