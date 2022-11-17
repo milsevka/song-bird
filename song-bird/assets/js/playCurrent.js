@@ -12,6 +12,7 @@ const volume = document.querySelector(".volume-current");
 const player = document.querySelector(".player-current");
 let next = document.querySelector(".button-next");
 let mainClick = document.querySelector(".answer-list");
+let progDot = document.querySelector(".progress-dot-current");
 
 let counter = 0;
 
@@ -96,7 +97,6 @@ export function musicCurrent() {
   function pauseAudioNext() {
     audioCurrent.pause();
     player.classList.add("playOn");
-    // localStorage.setItem("timePlay", audio.currentTime)
   }
 
   next.addEventListener("click", () => {
@@ -112,6 +112,7 @@ export function updateCurrentProgress(e) {
   const { duration, currentTime } = e.srcElement;
   const progressPercent = (currentTime / duration) * 100;
   progress.style.width = `${progressPercent}%`;
+  progDot.style.left = `${progressPercent}%`;
 }
 audioCurrent.addEventListener("timeupdate", updateCurrentProgress);
 

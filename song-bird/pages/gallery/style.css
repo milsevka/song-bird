@@ -1,14 +1,12 @@
 * {
   padding: 0;
   margin: 0 auto;
-  color: rgb(41, 77, 101); 
+  color: rgb(17, 46, 109);
 }
 body {
   background-image: url("../../assets/images/nature-oblaka-nebo-poristii-minimalizm-157285.jpeg")  ;
   font-family: 'Crimson Text', serif;
   font-weight: 600;
-  /* background-size: cover;
-  background-position-y: bottom; */
   user-select: none;   
   background-repeat: repeat-x;
   background-position-y: bottom;
@@ -225,9 +223,9 @@ input[type="range"] {
 }
 .volume-gallery::-webkit-slider-thumb {
   appearance: none;
-  width: 12px;
-  height: 12px;
-  background: #478db0;
+  width: 10px;
+  height: 10px;
+  background:  rgba(43, 92, 124, 1);
   border-radius: 5px;
   cursor: pointer;
 }
@@ -249,6 +247,17 @@ input[type="range"] {
   position: relative;
   cursor: pointer;
 }
+.progress-dot-gallery {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(43, 92, 124, 1);
+  top: 4px;
+  -webkit-transform: translate(-50%,calc(-50% + 2px));
+  transform: translate(-50%,calc(-50% + 2px));
+  cursor: pointer;
+}
 .progress_container-wrapper {
   display: flex;
   flex-direction: row;
@@ -259,7 +268,7 @@ input[type="range"] {
 
 .progress-gallery {
   position: absolute;
-  background-color: rgba(19, 22, 24, 0.7);
+  background-color: rgba(43, 92, 124, 0.7);
   height: 7px;
   border-radius: 5px;
 }

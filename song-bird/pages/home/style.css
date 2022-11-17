@@ -1,10 +1,9 @@
 * {
     padding: 0;
     margin: 0 auto;
-    color: rgb(30, 61, 81);
+    color: rgb(17, 46, 109);
   }
   body {
-    /* background-color: #c8d2ee; */
     background-image: url("../../assets/images/nature-oblaka-nebo-poristii-minimalizm-157285.jpeg")  ;
     font-family: 'Crimson Text', serif;
     font-weight: 600;
@@ -76,7 +75,7 @@ a {
     background-color: rgba(33, 74, 92, 0.2);
   }
   .button-play:hover {
-    scale: 1.02;
+    scale: 1.01;
     background-color: rgba(33, 74, 92, 0.3);
   }
   

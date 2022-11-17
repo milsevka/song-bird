@@ -1,16 +1,17 @@
 import birdsData from "./list.js";
 
 const audioGal = new Audio();
-const buttonPlay = document.querySelector(".play-gallery"); //
-const progress = document.querySelector(".progress-gallery");  //
-const progressCont = document.querySelector(".progress_container-gallery"); //
-const timeBit = document.querySelector(".currentPlay-gallery"); //
-const timeAll = document.querySelector(".lengthPlay-gallery"); //
-const volumeImg = document.querySelector(".volumeImg-gallery");//
-const volumeImgOff = document.querySelector(".volumeImgOff-gallery");//
-const volume = document.querySelector(".volume-gallery"); //
-const player = document.querySelector(".player-gallery");//
+const buttonPlay = document.querySelector(".play-gallery"); 
+const progress = document.querySelector(".progress-gallery");  
+const progressCont = document.querySelector(".progress_container-gallery"); 
+const timeBit = document.querySelector(".currentPlay-gallery"); 
+const timeAll = document.querySelector(".lengthPlay-gallery"); 
+const volumeImg = document.querySelector(".volumeImg-gallery");
+const volumeImgOff = document.querySelector(".volumeImgOff-gallery");
+const volume = document.querySelector(".volume-gallery"); 
+const player = document.querySelector(".player-gallery");
 let closePopup = document.querySelector(".close_popup")
+let progDot = document.querySelector(".progress-dot-gallery");
 
 
 
@@ -104,6 +105,7 @@ export function updateGalleryProgress(e) {
   const { duration, currentTime } = e.srcElement;
   const progressPercent = (currentTime / duration) * 100;
   progress.style.width = `${progressPercent}%`;
+  progDot.style.left = `${progressPercent}%`;
 }
 audioGal.addEventListener("timeupdate", updateGalleryProgress);
 

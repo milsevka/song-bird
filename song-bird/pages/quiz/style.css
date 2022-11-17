@@ -2,7 +2,8 @@
 * {
   padding: 0;
   margin: 0 auto;
-  color: rgb(30, 61, 81); 
+  color: rgb(17, 46, 109);
+  /* color: rgb(30, 61, 81);  */
 }
 body {
   background-image: url("../../assets/images/nature-oblaka-nebo-poristii-minimalizm-157285.jpeg")  ;
@@ -89,6 +90,9 @@ a {
     right: 20px;
     display: flex;
     gap: 5px;
+}
+.name-score, .text-score, .current-name {
+  color: rgb(17, 46, 109);
 }
 .current-img {
   margin-top: 10px;
@@ -180,8 +184,8 @@ input[type="range"] {
 }
 .volume::-webkit-slider-thumb,  .volume-current::-webkit-slider-thumb{
   appearance: none;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   background: #475a8b;
   border-radius: 5px;
   cursor: pointer;
@@ -214,11 +218,21 @@ input[type="range"] {
 
 .progress, .progress-current {
   position: absolute;
-background-color: rgba(19, 22, 24, 0.5);
+background-color: #475a8b;
 height: 7px;
 border-radius: 5px;
 }
-
+.progress-dot, .progress-dot-current {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #475a8b;
+  top: 4px;
+  -webkit-transform: translate(-50%,calc(-50% + 2px));
+  transform: translate(-50%,calc(-50% + 2px));
+  cursor: pointer;
+}
  .play, .play-current {
   width: 23px;
   height: 23px;
@@ -338,9 +352,10 @@ ul {
 }
 
 .footer-container {
-  width: 70%;
+  
+  width: 70%; 
   margin-top: 10px;
-  margin-bottom: 5px;
+ 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -386,6 +401,13 @@ ul {
 }
 .lang-wrapper {
   display: flex;
+}
+.game-over {
+  margin-top: 20px;
+  display: none;
+  width: 60%;
+  padding: 9rem 2rem;
+  font-size: 20px;
 }
 
 @media (max-width: 770px) {

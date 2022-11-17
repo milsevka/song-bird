@@ -12,6 +12,8 @@ const buttonPlay = document.querySelector(".play");
 const player = document.querySelector(".player");
 let answerSong = document.querySelector(".answer-song");
 let mainClick = document.querySelector(".answer-list");
+let questionCont = document.querySelector(".current-questions");
+let answerCont = document.querySelector(".answer");
 
 let nameBird = document.querySelector(".answer-name-bird");
 let nameEng = document.querySelector(".answer-name-eng");
@@ -24,11 +26,10 @@ let next = document.querySelector(".button-next");
 let meow = document.createElement("img");
 let answer = document.querySelectorAll(".form-check");
 let score = document.querySelector(".text-score");
-let wrapperPopup = document.querySelector(".wrapper-popup");
-let textPopup = document.querySelector(".popup-content");
-let closePopup = document.querySelector(".close-popup");
 let again = document.querySelector(".button-again");
 let navList = document.querySelectorAll(".nav-text");
+let gameOver = document.querySelector(".game-over");
+let gameOverText = document.querySelector(".game-over-text");
 
 let numberLevel = 0;
 localStorage.setItem("numberLevel", numberLevel);
@@ -128,17 +129,19 @@ next.addEventListener("click", () => {
 
     next.classList.remove("button-next-active");
   } else {
-    wrapperPopup.classList.add("open-popup");
+    questionCont.style.display = "none";
+    answerCont.style.display = "none";
+    gameOver.style.display = "block";
     if (localStorage.getItem("lang") == "ru") {
-      textPopup.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов из 30. Жаль, это не максимальное количество. 
+      gameOverText.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов из 30. Жаль, это не максимальное количество. 
       Попробуйте еще раз!`;
       again.innerHTML = "Попробовать еще раз";
     } else if (localStorage.getItem("lang") == "en") {
-      textPopup.innerHTML = `Congratulations! You scored ${counterScore} points out of 30. Too bad that's not the maximum.
+      gameOverText.innerHTML = `Congratulations! You scored ${counterScore} points out of 30. Too bad that's not the maximum.
     Try again!`;
       again.innerHTML = "To try one more time";
     } else if (localStorage.getItem("lang") == "be") {
-      textPopup.innerHTML = `Віншуем! Вы набралі ${counterScore} балаў з 30. Шкада, гэта не максімальная колькасць.
+      gameOverText.innerHTML = `Віншуем! Вы набралі ${counterScore} балаў з 30. Шкада, гэта не максімальная колькасць.
     Паспрабуйце яшчэ раз!`;
       again.innerHTML = "Паспрабаваць яшчэ раз";
     }
@@ -224,20 +227,19 @@ function changeScore() {
   }
 }
 
-closePopup.addEventListener("click", () => {
-  wrapperPopup.classList.remove("open-popup");
-});
-
 function maxScore() {
   if (counterScore === +30) {
+    questionCont.style.display = "none";
+    answerCont.style.display = "none";
+    gameOver.style.display = "block";
     if (localStorage.getItem("lang") == "ru") {
-      textPopup.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов из 30 и успешно прошли игру.
+      gameOverText.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов из 30 и успешно прошли игру.
      Возможно, вам стоит стать орнитологом!`;
     } else if (localStorage.getItem("lang") == "en") {
-      textPopup.innerHTML = `Congratulations! You scored ${counterScore} points out of 30 and successfully completed the game.
+      gameOverText.innerHTML= `Congratulations! You scored ${counterScore} points out of 30 and successfully completed the game.
     Maybe you should become an ornithologist!`;
-    } else if (localStorage.getItem("lang") == "be") {
-      textPopup.innerHTML = `Віншуем! Вы набралі ${counterScore} балаў з 30 і паспяхова прайшлі гульню.
+    } else if (localStorage.getItem("lang") == "be") { 
+    gameOverText.innerHTML = `Віншуем! Вы набралі ${counterScore} балаў з 30 і паспяхова прайшлі гульню.
     Магчыма, вам варта стаць арнітолагам!`;
     }
     again.classList.add("passive");
@@ -245,7 +247,9 @@ function maxScore() {
 }
 
 again.addEventListener("click", () => {
-  wrapperPopup.classList.remove("open-popup");
+  questionCont.style.display = "block";
+  answerCont.style.display = "block";
+  gameOver.style.display = "none";
   nameCur.innerHTML = "******";
   imgCur.src = "../../assets/images/pngwing.com (1).png";
   nameBird.innerHTML = "";

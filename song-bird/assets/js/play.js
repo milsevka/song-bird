@@ -12,6 +12,7 @@ const volumeImgOff = document.querySelector(".volumeImgOff");
 const volume = document.querySelector(".volume");
 let next = document.querySelector(".button-next");
 let clickAnswer = document.querySelector(".answer-list");
+let progDot = document.querySelector(".progress-dot");
 
 let numberLevel = 0;
 
@@ -39,13 +40,13 @@ export function music() {
     if (localStorage.getItem("winnerNumber")) {
       audio.src = birdsData[numberLevel][numberWin].audio;
       audio.play();
-      timeAll.textContent = `${birdsData[numberLevel][numberWin].duration}`;
+      // timeAll.textContent = `${birdsData[numberLevel][numberWin].duration}`;
     } else {
       audio.src = birdsData[numberLevel][numberSong].audio;
       audio.play();
-      timeAll.textContent = `${birdsData[numberLevel][numberSong].duration}`;
+      // timeAll.textContent = `${birdsData[numberLevel][numberSong].duration}`;
     }
-
+    timeAll.textContent = `${birdsData[numberLevel][numberSong].duration}`;
     playSave = localStorage.getItem("timePlay");
     if (!playSave) {
       audio.currentTime = 0;
@@ -136,6 +137,7 @@ export function updateProgress(e) {
   const { duration, currentTime } = e.srcElement;
   const progressPercent = (currentTime / duration) * 100;
   progress.style.width = `${progressPercent}%`;
+  progDot.style.left = `${progressPercent}%`;
 }
 audio.addEventListener("timeupdate", updateProgress);
 
