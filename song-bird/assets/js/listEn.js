@@ -45,7 +45,7 @@ const birdsDataEn = [
         name: 'Tit',
         species: 'Parus major',
         description: 'More than 40 different sound combinations are distinguished in the chirping of tits. They sing almost all year round, fading a little only in winter. Tits are real orderlies of the forest. One pair of tits during the nesting period protects dozens of trees from pests.',
-        image: 'https://live.staticflickr.com//65535//49366042493_c48c81d58d.jpg',
+        image: '../../assets/images/413px-Parus_major_m.jpg',
         audio: 'https://www.xeno-canto.org/sounds/uploaded/RFGQDPLDEC/XC518417-Kj%C3%B8ttmeis%20XC%20Helg%C3%B8ya%20Elias%20A.%20Ryberg20200108133922_079.mp3'
       }
     ],
@@ -279,7 +279,7 @@ const birdsDataEn = [
         name: 'Pelican',
         species: 'Pelecanus',
         description: 'Pelicans are inhabitants of the seas and rivers. They walk awkwardly, but fly and swim well. They feed mainly on fish, organize collective hunts - lining up in a semicircle, they flap their wings and beaks on the water and force out the frightened fish in shallow water.',
-        image: 'https://live.staticflickr.com/65535/49159147156_dcbbb5c12a.jpg',
+        image: '../../assets/images/Pelican.jpg',
         audio: 'https://www.xeno-canto.org/sounds/uploaded/XAMHIHFTZG/XC331138-call1.mp3'
       },
       {

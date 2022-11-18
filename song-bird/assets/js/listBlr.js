@@ -44,7 +44,7 @@ export const birdsDataBy = [
             name: 'Сініца',
             species: 'Parus major',
             description: "У шчабятанні сініц адрозніваюць больш за 40 розных гукавых спалучэнняў. Спяваюць яны амаль круглы год, трохі заціхаючы толькі зімой. Сініцы сапраўдныя санітары лесу. Адна пара сініц у перыяд гнездавання засцерагае ад шкоднікаў дзясяткі дрэў.",
-            image: 'https://live.staticflickr.com//65535//49366042493_c48c81d58d.jpg',
+            image: '../../assets/images/413px-Parus_major_m.jpg',
             audio: 'https://www.xeno-canto.org/sounds/uploaded/RFGQDPLDEC/XC518417-Kj%C3%B8ttmeis%20XC%20Helg%C3%B8ya%20Elias%20A.%20Ryberg20200108133922_079.mp3'
         }
     ],
@@ -273,7 +273,7 @@ export const birdsDataBy = [
             name: 'Пелікан',
             species: 'Pelecanus',
             description: `Пеліканы - насельнікі мораў і рэк. Ходзяць яны нязграбна, але добра лётаюць і плаваюць. Сілкуюцца ў асноўным рыбай, ладзяць калектыўныя паляваннi — выбудаваўшыся паўкругам пляскаюць па вадзе крыламі і дзюбамі і выцясняюць напалоханую рыбу на мелкаводдзе.`,
-            image: 'https://live.staticflickr.com/2169/2301136627_d1f76c005f_o.jpg',
+            image: '../../assets/images/Pelican.jpg',
             audio: 'https://www.xeno-canto.org/sounds/uploaded/XAMHIHFTZG/XC331138-call1.mp3'
         },
         {
