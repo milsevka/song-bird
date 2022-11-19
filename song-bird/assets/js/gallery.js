@@ -18,25 +18,30 @@ let infoBird = document.querySelector(".answer-info");
 let nameEng = document.querySelector(".answer-name-eng");
 let navList = document.querySelectorAll(".nav-text");
 
-if (localStorage.getItem("lang") == "ru") {
-  navList[0].innerHTML = "Главная";
-  navList[1].innerHTML = "Викторина";
-  navList[2].innerHTML = "Галерея";
-  galleryText.innerHTML =
-    "Вы можете нажать на любую карточку и прочитать подробную информацию о птице, а также послушать её голос";
-} else if (localStorage.getItem("lang") == "en") {
+switch (localStorage.getItem("lang")) {
+  case 'ru':
+    navList[0].innerHTML = "Главная";
+    navList[1].innerHTML = "Викторина";
+    navList[2].innerHTML = "Галерея";
+    galleryText.innerHTML =
+      "Вы можете нажать на любую карточку и прочитать подробную информацию о птице, а также послушать её голос.";
+  break;
+  case 'en': 
   navList[0].innerHTML = "Нome";
   navList[1].innerHTML = "Quiz";
   navList[2].innerHTML = "Gallery";
   galleryText.innerHTML =
-    "You can click on any card and read detailed information about the bird, as well as listen to its voice";
-} else if (localStorage.getItem("lang") == "be") {
+    "You can click on any card and read detailed information about the bird, as well as listen to its voice.";
+  break;
+  case 'be': 
   navList[0].innerHTML = "Галоўная";
   navList[1].innerHTML = "Віктарына";
   navList[2].innerHTML = "Галерэя";
   galleryText.innerHTML =
-    "Вы можаце націснуць на любую картку і прачытаць падрабязную інфармацыю аб птушцы, а таксама паслухаць яе голас";
+    "Вы можаце націснуць на любую картку і прачытаць падрабязную інфармацыю аб птушцы, а таксама паслухаць яе голас.";
+  break;
 }
+
 
 function makeGalery() {
   for (let i = 0; i < 6; i++) {
@@ -52,17 +57,20 @@ function makeGalery() {
       let nameEn = document.createElement("p");
       let pic = document.createElement("img");
       pic.className = "photo";
-      if (localStorage.getItem("lang") == "ru") {
-        name.innerHTML = birdsData[i][j].name;
-        nameEn.innerHTML = birdsData[i][j].species;
-      } else if (localStorage.getItem("lang") == "en") {
+      switch (localStorage.getItem("lang")) {
+        case 'ru':
+          name.innerHTML = birdsData[i][j].name;
+          nameEn.innerHTML = birdsData[i][j].species;
+        case 'en': 
         name.innerHTML = birdsDataEn[i][j].name;
         nameEn.innerHTML = birdsDataEn[i][j].species;
-      } else if (localStorage.getItem("lang") == "be") {
+        break;
+        case 'be': 
         name.innerHTML = birdsDataBy[i][j].name;
         nameEn.innerHTML = birdsDataBy[i][j].species;
+        break;
       }
-
+     
       pic.src = birdsData[i][j].image;
       cardContainer.append(card);
       card.append(name);
@@ -82,16 +90,20 @@ containerGallery.addEventListener("click", (event) => {
   let numCon = parentCont.id;
   localStorage.setItem("container", numCon);
   wrapperPopup.classList.add("open-popup");
-  if (localStorage.getItem("lang") == "ru") {
-    nameCur.innerHTML = birdsData[numCon][numCard - 1].name;
-    infoBird.innerHTML = birdsData[numCon][numCard - 1].description;
-  } else if (localStorage.getItem("lang") == "en") {
+  switch (localStorage.getItem("lang")) {
+    case 'ru':
+      nameCur.innerHTML = birdsData[numCon][numCard - 1].name;
+      infoBird.innerHTML = birdsData[numCon][numCard - 1].description;
+    case 'en': 
     nameCur.innerHTML = birdsDataEn[numCon][numCard - 1].name;
     infoBird.innerHTML = birdsDataEn[numCon][numCard - 1].description;
-  } else if (localStorage.getItem("lang") == "be") {
+    break;
+    case 'be': 
     nameCur.innerHTML = birdsDataBy[numCon][numCard - 1].name;
     infoBird.innerHTML = birdsDataBy[numCon][numCard - 1].description;
+    break;
   }
+ 
   imgCur.src = birdsData[numCon][numCard - 1].image;
   nameEng.innerHTML = birdsData[numCon][numCard - 1].species;
 });

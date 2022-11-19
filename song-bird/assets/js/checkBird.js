@@ -58,16 +58,21 @@ export default function check() {
       numberBird = target.id - 1;
 
       localStorage.setItem("check", numberBird);
-      if (localStorage.getItem("lang") == "ru") {
-        nameBird.innerHTML = birdsData[numberLevel][numberBird].name;
-        infoBird.innerHTML = birdsData[numberLevel][numberBird].description;
-      } else if (localStorage.getItem("lang") == "en") {
+      switch (localStorage.getItem("lang")) {
+        case 'ru':
+          nameBird.innerHTML = birdsData[numberLevel][numberBird].name;
+          infoBird.innerHTML = birdsData[numberLevel][numberBird].description;
+        break;
+        case 'en': 
         nameBird.innerHTML = birdsDataEn[numberLevel][numberBird].name;
         infoBird.innerHTML = birdsDataEn[numberLevel][numberBird].description;
-      } else if (localStorage.getItem("lang") == "be") {
+        break;
+        case 'be': 
         nameBird.innerHTML = birdsDataBy[numberLevel][numberBird].name;
         infoBird.innerHTML = birdsDataBy[numberLevel][numberBird].description;
+        break;
       }
+    
       meow.src = birdsData[numberLevel][numberBird].image;
       nameEng.innerHTML = birdsData[numberLevel][numberBird].species;
       win();
@@ -90,14 +95,18 @@ next.addEventListener("click", () => {
     nameCur.innerHTML = "******";
     imgCur.src = "../../assets/images/pngwing.com (1).png";
     nameBird.innerHTML = "";
-    if (localStorage.getItem("lang") == "ru") {
-      infoBird.innerHTML = "Послушайте плеер.Выберите птицу из списка";
-    } else if (localStorage.getItem("lang") == "en") {
+    switch (localStorage.getItem("lang")) {
+      case 'ru':
+        infoBird.innerHTML = "Послушайте плеер.Выберите птицу из списка";
+      break;
+      case 'en': 
       infoBird.innerHTML = "Listen to the player. Choose a bird from the list";
-    } else if (localStorage.getItem("lang") == "be") {
+      break;
+      case 'be': 
       infoBird.innerHTML = "Паслухайце плэер. Выберыце птушку са спісу";
+      break;
     }
-
+   
     nameEng.innerHTML = "";
     meow.remove();
     getRandomIntInclusive(0, 5);
@@ -116,14 +125,18 @@ next.addEventListener("click", () => {
     winner = false;
 
     for (let i = 0; i < answer.length; i++) {
-      if (localStorage.getItem("lang") == "ru") {
-        answer[i].innerHTML = birdsData[numberLevel][i].name;
-      } else if (localStorage.getItem("lang") == "en") {
+      switch (localStorage.getItem("lang")) {
+        case 'ru':
+          answer[i].innerHTML = birdsData[numberLevel][i].name;
+        break;
+        case 'en': 
         answer[i].innerHTML = birdsDataEn[numberLevel][i].name;
-      } else if (localStorage.getItem("lang") == "be") {
+        break;
+        case 'be': 
         answer[i].innerHTML = birdsDataBy[numberLevel][i].name;
+        break;
       }
-
+     
       answer[i].style.color = "";
     }
 
@@ -132,19 +145,24 @@ next.addEventListener("click", () => {
     questionCont.style.display = "none";
     answerCont.style.display = "none";
     gameOver.style.display = "block";
-    if (localStorage.getItem("lang") == "ru") {
-      gameOverText.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов из 30. Жаль, это не максимальное количество. 
-      Попробуйте еще раз!`;
-      again.innerHTML = "Попробовать еще раз";
-    } else if (localStorage.getItem("lang") == "en") {
+    switch (localStorage.getItem("lang")) {
+      case 'ru':
+        gameOverText.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов из 30. Жаль, это не максимальное количество. 
+        Попробуйте еще раз!`;
+        again.innerHTML = "Попробовать еще раз";
+      break;
+      case 'en': 
       gameOverText.innerHTML = `Congratulations! You scored ${counterScore} points out of 30. Too bad that's not the maximum.
     Try again!`;
       again.innerHTML = "To try one more time";
-    } else if (localStorage.getItem("lang") == "be") {
+      break;
+      case 'be': 
       gameOverText.innerHTML = `Віншуем! Вы набралі ${counterScore} балаў з 30. Шкада, гэта не максімальная колькасць.
-    Паспрабуйце яшчэ раз!`;
-      again.innerHTML = "Паспрабаваць яшчэ раз";
+      Паспрабуйце яшчэ раз!`;
+        again.innerHTML = "Паспрабаваць яшчэ раз";
+      break;
     }
+   
 
     maxScore();
   }
@@ -153,14 +171,20 @@ next.addEventListener("click", () => {
 function win() {
   deleteCheck = localStorage.getItem("check");
   let nowAns = localStorage.getItem("now");
+ 
   if (counterLevel === 5) {
-    if (localStorage.getItem("lang") == "ru") {
-      next.innerHTML = "Посмотреть результаты";
-    } else if (localStorage.getItem("lang") == "en") {
+    switch (localStorage.getItem("lang")) {
+      case 'ru':
+        next.innerHTML = "Посмотреть результаты";
+      break;
+      case 'en': 
       next.innerHTML = "View results";
-    } else if (localStorage.getItem("lang") == "be") {
+      break;
+      case 'be': 
       next.innerHTML = "Паглядзець вынікі";
+      break;
     }
+    
   }
   if (deleteCheck === nowAns) {
     counterWin = counterWin + 1;
@@ -171,8 +195,8 @@ function win() {
     localStorage.setItem("winnerNumber", nowAns);
     localStorage.setItem("win", goNext);
     next.classList.add("button-next-active");
-
-    if (localStorage.getItem("lang") == "ru") {
+    switch (localStorage.getItem("lang")) {
+      case 'ru':
       nameCur.innerHTML = birdsData[numberLevel][nowAns].name;
       imgCur.src = birdsData[numberLevel][nowAns].image;
 
@@ -180,7 +204,8 @@ function win() {
       infoBird.innerHTML = birdsData[numberLevel][nowAns].description;
       meow.src = birdsData[numberLevel][nowAns].image;
       nameEng.innerHTML = birdsData[numberLevel][nowAns].species;
-    } else if (localStorage.getItem("lang") == "en") {
+      break;
+      case 'en': 
       nameCur.innerHTML = birdsDataEn[numberLevel][nowAns].name;
       imgCur.src = birdsDataEn[numberLevel][nowAns].image;
 
@@ -188,7 +213,8 @@ function win() {
       infoBird.innerHTML = birdsDataEn[numberLevel][nowAns].description;
       meow.src = birdsDataEn[numberLevel][nowAns].image;
       nameEng.innerHTML = birdsDataEn[numberLevel][nowAns].species;
-    } else if (localStorage.getItem("lang") == "be") {
+      break;
+      case 'be': 
       nameCur.innerHTML = birdsDataBy[numberLevel][nowAns].name;
       imgCur.src = birdsDataBy[numberLevel][nowAns].image;
 
@@ -196,7 +222,9 @@ function win() {
       infoBird.innerHTML = birdsDataBy[numberLevel][nowAns].description;
       meow.src = birdsDataBy[numberLevel][nowAns].image;
       nameEng.innerHTML = birdsDataBy[numberLevel][nowAns].species;
+      break;
     }
+  
     answer[deleteCheck].style.color = "rgb(19 97 29)";
     next.disabled = false;
     changeScore();
@@ -232,16 +260,21 @@ function maxScore() {
     questionCont.style.display = "none";
     answerCont.style.display = "none";
     gameOver.style.display = "block";
-    if (localStorage.getItem("lang") == "ru") {
-      gameOverText.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов из 30 и успешно прошли игру.
-     Возможно, вам стоит стать орнитологом!`;
-    } else if (localStorage.getItem("lang") == "en") {
+    switch (localStorage.getItem("lang")) {
+      case 'ru':
+        gameOverText.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов из 30 и успешно прошли игру.
+        Возможно, вам стоит стать орнитологом!`;
+      break;
+      case 'en': 
       gameOverText.innerHTML= `Congratulations! You scored ${counterScore} points out of 30 and successfully completed the game.
-    Maybe you should become an ornithologist!`;
-    } else if (localStorage.getItem("lang") == "be") { 
-    gameOverText.innerHTML = `Віншуем! Вы набралі ${counterScore} балаў з 30 і паспяхова прайшлі гульню.
-    Магчыма, вам варта стаць арнітолагам!`;
+       Maybe you should become an ornithologist!`;
+      break;
+      case 'be': 
+      gameOverText.innerHTML = `Віншуем! Вы набралі ${counterScore} балаў з 30 і паспяхова прайшлі гульню.
+       Магчыма, вам варта стаць арнітолагам!`;
+      break;
     }
+    
     again.classList.add("passive");
   }
 }
@@ -253,16 +286,21 @@ again.addEventListener("click", () => {
   nameCur.innerHTML = "******";
   imgCur.src = "../../assets/images/pngwing.com (1).png";
   nameBird.innerHTML = "";
-  if (localStorage.getItem("lang") == "ru") {
-    infoBird.innerHTML = "Послушайте плеер. Выберите птицу из списка";
-    next.innerHTML = "Следующий вопрос";
-  } else if (localStorage.getItem("lang") == "en") {
+  switch (localStorage.getItem("lang")) {
+    case 'ru':
+      infoBird.innerHTML = "Послушайте плеер. Выберите птицу из списка";
+      next.innerHTML = "Следующий вопрос";
+    break;
+    case 'en': 
     infoBird.innerHTML = "Listen to the player. Choose a bird from the list";
-    next.innerHTML = "Next question";
-  } else if (localStorage.getItem("lang") == "be") {
+       next.innerHTML = "Next question";
+    break;
+    case 'be': 
     infoBird.innerHTML = "Паслухайце плэер. Выберыце птушку са спісу";
     next.innerHTML = "Наступнае пытанне";
+    break;
   }
+ 
 
   nameEng.innerHTML = "";
   meow.remove();
@@ -286,14 +324,18 @@ again.addEventListener("click", () => {
   arrBirds[5].classList.remove("styleLevel");
 
   for (let i = 0; i < answer.length; i++) {
-    if (localStorage.getItem("lang") == "ru") {
-      answer[i].innerHTML = birdsData[numberLevel][i].name;
-    } else if (localStorage.getItem("lang") == "en") {
-      answer[i].innerHTML = birdsDataEn[numberLevel][i].name;
-    } else if (localStorage.getItem("lang") == "be") {
-      answer[i].innerHTML = birdsDataBy[numberLevel][i].name;
+    switch (localStorage.getItem("lang")) {
+      case 'ru':
+        answer[i].innerHTML = birdsData[numberLevel][i].name;
+      break;
+      case 'en': 
+        answer[i].innerHTML = birdsDataEn[numberLevel][i].name;
+      break;
+      case 'be': 
+        answer[i].innerHTML = birdsDataBy[numberLevel][i].name;
+      break;
     }
-
+   
     answer[i].style.color = "";
   }
 

@@ -10,6 +10,7 @@ let navList = document.querySelectorAll(".nav-text");
 function lang() {
   choise.forEach((el) => {
     el.onchange = () => localStorage.setItem("lang", el.id);
+    
     if (!localStorage.getItem("lang") || localStorage.getItem("lang") == "ru") {
       document.getElementById("ru").checked = true;
       navList[0].innerHTML = "Главная";

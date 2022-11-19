@@ -40,11 +40,11 @@ export function music() {
     if (localStorage.getItem("winnerNumber")) {
       audio.src = birdsData[numberLevel][numberWin].audio;
       audio.play();
-      // timeAll.textContent = `${birdsData[numberLevel][numberWin].duration}`;
+    
     } else {
       audio.src = birdsData[numberLevel][numberSong].audio;
       audio.play();
-      // timeAll.textContent = `${birdsData[numberLevel][numberSong].duration}`;
+    
     }
     timeAll.textContent = `${birdsData[numberLevel][numberSong].duration}`;
     playSave = localStorage.getItem("timePlay");
@@ -68,6 +68,10 @@ export function music() {
     updateCurrentSong();
     audio.play();
     player.classList.remove("playOn");
+    // if (audio.currentTime == audio.duration) {
+    //   audio.currentTime = 0;
+    //   console.log('stop')
+    // }
   }
 
   function toggleBtn() {
