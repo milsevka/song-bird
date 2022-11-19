@@ -61,6 +61,7 @@ function makeGalery() {
         case 'ru':
           name.innerHTML = birdsData[i][j].name;
           nameEn.innerHTML = birdsData[i][j].species;
+          break;
         case 'en': 
         name.innerHTML = birdsDataEn[i][j].name;
         nameEn.innerHTML = birdsDataEn[i][j].species;
@@ -94,6 +95,7 @@ containerGallery.addEventListener("click", (event) => {
     case 'ru':
       nameCur.innerHTML = birdsData[numCon][numCard - 1].name;
       infoBird.innerHTML = birdsData[numCon][numCard - 1].description;
+      break;
     case 'en': 
     nameCur.innerHTML = birdsDataEn[numCon][numCard - 1].name;
     infoBird.innerHTML = birdsDataEn[numCon][numCard - 1].description;
