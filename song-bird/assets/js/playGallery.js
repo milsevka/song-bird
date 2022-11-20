@@ -51,6 +51,13 @@ export function musicGallery() {
     audioGal.play();
     player.classList.remove("playOn");
   }
+  audioGal.addEventListener("timeupdate", reverse);
+  function reverse() {
+    if (audioGal.currentTime == audioGal.duration) {
+      audioGal.currentTime = 0;
+      audioGal.play();
+    }
+  }
 
   function toggleBtnGallery() {
     buttonPlay.classList.toggle("pause");

@@ -68,10 +68,13 @@ export function music() {
     updateCurrentSong();
     audio.play();
     player.classList.remove("playOn");
-    // if (audio.currentTime == audio.duration) {
-    //   audio.currentTime = 0;
-    //   console.log('stop')
-    // }
+  }
+  audio.addEventListener("timeupdate", reverse);
+  function reverse() {
+    if (audio.currentTime == audio.duration) {
+      audio.currentTime = 0;
+      audio.play();
+    }
   }
 
   function toggleBtn() {

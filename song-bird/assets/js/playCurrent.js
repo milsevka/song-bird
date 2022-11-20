@@ -61,6 +61,13 @@ export function musicCurrent() {
     audioCurrent.play();
     player.classList.remove("playOn");
   }
+  audioCurrent.addEventListener("timeupdate", reverse);
+  function reverse() {
+    if (audioCurrent.currentTime == audioCurrent.duration) {
+      audioCurrent.currentTime = 0;
+      audioCurrent.play();
+    }
+  }
 
   function toggleBtnCurrent() {
     buttonPlay.classList.toggle("pause");
