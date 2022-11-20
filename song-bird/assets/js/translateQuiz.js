@@ -32,6 +32,11 @@ export default function translateQ() {
         next.innerHTML = "Наступнае пытанне";
         mainScore.textContent = "Рахунак:";
         break;
+      default:
+        answer[i].innerHTML = birdsData[numberLevel][i].name;
+        infoBird.innerHTML = "Послушайте плеер. <br> Выберите птицу из списка";
+        next.innerHTML = "Следующий вопрос";
+        mainScore.textContent = "Счёт:";
     }
   }
   switch (localStorage.getItem("lang")) {
@@ -68,6 +73,16 @@ export default function translateQ() {
       navList[1].innerHTML = "Віктарына";
       navList[2].innerHTML = "Галерэя";
       break;
+    default:
+      arrBirds[0].innerHTML = "Разминка";
+      arrBirds[1].innerHTML = "Воробьиные";
+      arrBirds[2].innerHTML = "Лесные птицы";
+      arrBirds[3].innerHTML = "Певчие птицы";
+      arrBirds[4].innerHTML = "Хищные птицы";
+      arrBirds[5].innerHTML = "Морские птицы";
+      navList[0].innerHTML = "Главная";
+      navList[1].innerHTML = "Викторина";
+      navList[2].innerHTML = "Галерея";
   }
 }
 

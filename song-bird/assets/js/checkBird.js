@@ -60,8 +60,8 @@ export default function check() {
       localStorage.setItem("check", numberBird);
       switch (localStorage.getItem("lang")) {
         case 'ru':
-          nameBird.innerHTML = birdsData[numberLevel][numberBird].name;
-          infoBird.innerHTML = birdsData[numberLevel][numberBird].description;
+        nameBird.innerHTML = birdsData[numberLevel][numberBird].name;
+        infoBird.innerHTML = birdsData[numberLevel][numberBird].description;
         break;
         case 'en': 
         nameBird.innerHTML = birdsDataEn[numberLevel][numberBird].name;
@@ -97,7 +97,7 @@ next.addEventListener("click", () => {
     nameBird.innerHTML = "";
     switch (localStorage.getItem("lang")) {
       case 'ru':
-        infoBird.innerHTML = "Послушайте плеер.Выберите птицу из списка";
+      infoBird.innerHTML = "Послушайте плеер.Выберите птицу из списка";
       break;
       case 'en': 
       infoBird.innerHTML = "Listen to the player. Choose a bird from the list";
@@ -105,6 +105,8 @@ next.addEventListener("click", () => {
       case 'be': 
       infoBird.innerHTML = "Паслухайце плэер. Выберыце птушку са спісу";
       break;
+      default: 
+      infoBird.innerHTML = "Послушайте плеер.Выберите птицу из списка";
     }
    
     nameEng.innerHTML = "";
@@ -127,7 +129,7 @@ next.addEventListener("click", () => {
     for (let i = 0; i < answer.length; i++) {
       switch (localStorage.getItem("lang")) {
         case 'ru':
-          answer[i].innerHTML = birdsData[numberLevel][i].name;
+        answer[i].innerHTML = birdsData[numberLevel][i].name;
         break;
         case 'en': 
         answer[i].innerHTML = birdsDataEn[numberLevel][i].name;
@@ -135,7 +137,10 @@ next.addEventListener("click", () => {
         case 'be': 
         answer[i].innerHTML = birdsDataBy[numberLevel][i].name;
         break;
+        default: 
+        answer[i].innerHTML = birdsData[numberLevel][i].name;
       }
+      
      
       answer[i].style.color = "";
     }
@@ -161,6 +166,10 @@ next.addEventListener("click", () => {
       Паспрабуйце яшчэ раз!`;
         again.innerHTML = "Паспрабаваць яшчэ раз";
       break;
+      default: 
+      gameOverText.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов из 30. Жаль, это не максимальное количество. 
+        Попробуйте еще раз!`;
+      again.innerHTML = "Попробовать еще раз";
     }
    
 
@@ -183,6 +192,8 @@ function win() {
       case 'be': 
       next.innerHTML = "Паглядзець вынікі";
       break;
+      default: 
+      next.innerHTML = "Посмотреть результаты";
     }
     
   }
@@ -223,6 +234,14 @@ function win() {
       meow.src = birdsDataBy[numberLevel][nowAns].image;
       nameEng.innerHTML = birdsDataBy[numberLevel][nowAns].species;
       break;
+      default: 
+      nameCur.innerHTML = birdsData[numberLevel][nowAns].name;
+      imgCur.src = birdsData[numberLevel][nowAns].image;
+
+      nameBird.innerHTML = birdsData[numberLevel][nowAns].name;
+      infoBird.innerHTML = birdsData[numberLevel][nowAns].description;
+      meow.src = birdsData[numberLevel][nowAns].image;
+      nameEng.innerHTML = birdsData[numberLevel][nowAns].species;
     }
   
     answer[deleteCheck].style.color = "rgb(19 97 29)";
@@ -273,6 +292,9 @@ function maxScore() {
       gameOverText.innerHTML = `Віншуем! Вы набралі ${counterScore} балаў з 30 і паспяхова прайшлі гульню.
        Магчыма, вам варта стаць арнітолагам!`;
       break;
+      default: 
+      gameOverText.innerHTML = `Поздравляем! Вы набрали ${counterScore} баллов из 30 и успешно прошли игру.
+        Возможно, вам стоит стать орнитологом!`;
     }
     
     again.classList.add("passive");
@@ -299,6 +321,9 @@ again.addEventListener("click", () => {
     infoBird.innerHTML = "Паслухайце плэер. Выберыце птушку са спісу";
     next.innerHTML = "Наступнае пытанне";
     break;
+    default: 
+    infoBird.innerHTML = "Послушайте плеер. Выберите птицу из списка";
+    next.innerHTML = "Следующий вопрос";
   }
  
 
@@ -334,6 +359,8 @@ again.addEventListener("click", () => {
       case 'be': 
         answer[i].innerHTML = birdsDataBy[numberLevel][i].name;
       break;
+      default: 
+      answer[i].innerHTML = birdsData[numberLevel][i].name;
     }
    
     answer[i].style.color = "";

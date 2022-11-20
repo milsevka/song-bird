@@ -70,6 +70,9 @@ function makeGalery() {
         name.innerHTML = birdsDataBy[i][j].name;
         nameEn.innerHTML = birdsDataBy[i][j].species;
         break;
+        default: 
+        name.innerHTML = birdsData[i][j].name;
+        nameEn.innerHTML = birdsData[i][j].species;
       }
      
       pic.src = birdsData[i][j].image;
@@ -104,6 +107,9 @@ containerGallery.addEventListener("click", (event) => {
     nameCur.innerHTML = birdsDataBy[numCon][numCard - 1].name;
     infoBird.innerHTML = birdsDataBy[numCon][numCard - 1].description;
     break;
+    default: 
+    nameCur.innerHTML = birdsData[numCon][numCard - 1].name;
+    infoBird.innerHTML = birdsData[numCon][numCard - 1].description;
   }
  
   imgCur.src = birdsData[numCon][numCard - 1].image;
