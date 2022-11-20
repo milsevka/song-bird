@@ -12,6 +12,7 @@ const volume = document.querySelector(".volume-gallery");
 const player = document.querySelector(".player-gallery");
 let closePopup = document.querySelector(".close_popup")
 let progDot = document.querySelector(".progress-dot-gallery");
+let wrapperPopup = document.querySelector(".wrapper-popup");
 
 
 
@@ -20,7 +21,6 @@ export function musicGallery() {
  
   player.classList.add("playOn");
   buttonPlay.addEventListener("click", toggleBtnGallery);
-  // audioGal.currentTime = 0;
 
   function updateGallerySong() {
  
@@ -104,6 +104,22 @@ closePopup.addEventListener("click", () => {
   audioGal.currentTime = 0;
 
 })
+wrapperPopup.onclick = function (event) {
+  let target = event.target;
+  if (target.className == "wrapper-popup open-popup") {
+    wrapperPopup.classList.remove("open-popup");
+    pauseAudioGallery();
+  buttonPlay.classList.remove("pause");
+  localStorage.removeItem("card")
+  localStorage.removeItem("container")
+  localStorage.removeItem("timePlayGal")
+
+  timeAll.textContent = "00:00";
+  
+  audioGal.currentTime = 0;
+  }
+};
+
  }
 
 musicGallery()
