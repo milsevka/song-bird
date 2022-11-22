@@ -2,13 +2,15 @@
 * {
   padding: 0;
   margin: 0 auto;
-  color: rgb(17, 46, 109);
+  color: rgb(9, 32, 81);
+  font-size: 18px;
 }
 body {
   background-image: url("../../assets/images/nature-oblaka-nebo-poristii-minimalizm-157285.jpeg")  ;
   font-family: 'Crimson Text', serif;
   backdrop-filter: blur(4px);
   font-weight: 600;
+  
     background-size: cover;
     background-position-y: 75%;
     user-select: none;  
@@ -101,7 +103,6 @@ a {
 .current-bird, .answer-img-photo {
   width: 200px;
   height: 155px;
-   /* object-fit: cover; */
   border-radius: 10px;
 }
 .current-name {
@@ -277,14 +278,13 @@ border-radius: 5px;
   width: 100%;
   border: 1px solid rgb(58, 105, 131);
   border-radius: 5px;
-  font-size: 18px;
+  font-size: 20px;
   box-shadow: 0px 4.8px 3.6px rgba(0, 0, 0, 0.101),
   0px 13.4px 10px rgba(0, 0, 0, 0.141), 0px 32.3px 24.1px rgba(0, 0, 0, 0.157),
   0px 107px 80px rgba(0, 0, 0, 0.15);
  
 } 
 .form-check:hover {
-  /* scale: 1.02; */
   background-color: rgba(76, 92, 137, 0.4);
 }
 
